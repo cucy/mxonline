@@ -9,7 +9,7 @@ from django.db import models
 class UserProfile(AbstractUser):
     nike_name = models.CharField(max_length=50, default='', verbose_name=u'昵称')
     birday = models.DateField(null=True, blank=True, verbose_name=u'生日')
-    gender = models.CharField(max_length=5, choices=(('male', u'男'), ('female', u'女')), default='female',
+    gender = models.CharField(max_length=8, choices=(('male', u'男'), ('female', u'女')), default='female',
                               verbose_name=u'性别')
     address = models.CharField(max_length=100, default='', verbose_name=u'地址')
     mobile = models.CharField(max_length=11, null=True, blank=True)
@@ -26,7 +26,7 @@ class UserProfile(AbstractUser):
 class EmailVerifyRecord(models.Model):
     code = models.CharField(max_length=20, verbose_name=u'验证码')
     email = models.EmailField(max_length=50, verbose_name=u'邮箱')
-    send_type = models.CharField(max_length=5, choices=(('register', u'注册'), ('forget', u'找回密码')), )
+    send_type = models.CharField(max_length=8, choices=(('register', u'注册'), ('forget', u'找回密码')), )
     send_time = models.DateTimeField(default=datetime.now)
 
     class Meta:
