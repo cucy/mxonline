@@ -1,4 +1,4 @@
-#coding:utf8
+# coding:utf8
 """
 Django settings for mxonline project.
 
@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 import sys
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 '''将应用插到系统默认路径'''
@@ -30,8 +31,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
+
+
+AUTHENTICATION_BACKENDS  = (
+    'users.views.CustomBackend',
+)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -48,14 +53,13 @@ INSTALLED_APPS = [
     'crispy_forms',
 ]
 
-
 AUTH_USER_MODEL = "users.UserProfile"
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -83,7 +87,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mxonline.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
@@ -98,7 +101,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -117,7 +119,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
