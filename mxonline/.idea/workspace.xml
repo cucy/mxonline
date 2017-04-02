@@ -45,18 +45,18 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mxonline/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+            <state relative-caret-position="142">
+              <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-78">
-              <caret line="61" column="92" lean-forward="false" selection-start-line="61" selection-start-column="92" selection-end-line="61" selection-end-column="92" />
+            <state relative-caret-position="208">
+              <caret line="74" column="26" lean-forward="false" selection-start-line="74" selection-start-column="26" selection-end-line="74" selection-end-column="26" />
               <folding>
                 <element signature="n#style#0;n#p#3;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#p#4;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -82,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="804">
-              <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+            <state relative-caret-position="164">
+              <caret line="27" column="67" lean-forward="true" selection-start-line="27" selection-start-column="67" selection-end-line="27" selection-end-column="67" />
               <folding>
                 <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#header#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#header#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -144,12 +144,14 @@
       <find>../media/banner</find>
       <find>..</find>
       <find>/media/</find>
+      <find>../img</find>
       <find>&lt;!--登录后跳转--&gt;</find>
     </findStrings>
     <replaceStrings>
       <replace>/static/</replace>
       <replace>/media</replace>
       <replace>/media/org/2016/12</replace>
+      <replace>/static/images</replace>
       <replace>/static/media/</replace>
     </replaceStrings>
   </component>
@@ -175,9 +177,9 @@
         <option value="$PROJECT_DIR$/apps/courses/apps.py" />
         <option value="$PROJECT_DIR$/apps/organization/__init__.py" />
         <option value="$PROJECT_DIR$/apps/organization/apps.py" />
+        <option value="$PROJECT_DIR$/templates/login.html" />
         <option value="$PROJECT_DIR$/mxonline/urls.py" />
         <option value="$PROJECT_DIR$/templates/index.html" />
-        <option value="$PROJECT_DIR$/templates/login.html" />
       </list>
     </option>
   </component>
@@ -232,137 +234,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="media" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="mxonline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mxonline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="media" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="org" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="12" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mxonline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mxonline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="media" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="org" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mxonline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mxonline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="media" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="image" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="12" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mxonline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mxonline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="media" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="image" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2016" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mxonline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mxonline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1105,34 +977,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mxonline/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/media/image/2016/12/default_big_14.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="804">
-          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#header#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#header#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-78">
-          <caret line="61" column="92" lean-forward="false" selection-start-line="61" selection-start-column="92" selection-end-line="61" selection-end-column="92" />
+        <state relative-caret-position="208">
+          <caret line="74" column="26" lean-forward="false" selection-start-line="74" selection-start-column="26" selection-end-line="74" selection-end-column="26" />
           <folding>
             <element signature="n#style#0;n#p#3;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#p#4;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1143,6 +996,25 @@
             <marker date="1491129378000" expanded="false" signature="3376:3382" ph=" " />
             <marker date="1491129378000" expanded="false" signature="3382:3388" ph=" " />
             <marker date="1491129378000" expanded="false" signature="3388:3394" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mxonline/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="27" column="67" lean-forward="true" selection-start-line="27" selection-start-column="67" selection-end-line="27" selection-end-column="67" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#header#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#0;n#div#0;n#div#0;n#header#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

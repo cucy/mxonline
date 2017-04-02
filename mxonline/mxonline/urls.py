@@ -21,4 +21,5 @@ urlpatterns = [
     # url(r'^admin/', admin.site.urls),
     url(r'^xadmin/', xadmin.site.urls),
     url('^$', TemplateView.as_view(template_name="index.html"), name="index"),
+    url('^login/$', TemplateView.as_view(template_name="login.html"), name="login"),
 ]
