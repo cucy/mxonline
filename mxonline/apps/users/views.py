@@ -5,7 +5,7 @@ from django.contrib.auth.backends import ModelBackend
 from django.db.models import Q
 from django.views.generic.base import View
 from django.contrib.auth.hashers import make_password
-from .models import UserProfile
+from .models import UserProfile, EmailVerifyRecord
 from .forms import LoginForm, RegisterForm
 from utils.email_send import  send_register_email
 
@@ -42,8 +42,11 @@ class LoginView(View):
 
             user = authenticate(username=user_name, password=pass_word)
             if user is not None:
-                login(request, user)
-                return render(request, "index.html")
+                if user.is_active:
+                    login(request, user)
+                    return render(request, "index.html")
+                else:
+                    return render(request, "login.html", {"msg": "用户名未激活", })
             else:
                 return render(request, "login.html", {"msg": "用户名或密码错误", })
         else:
@@ -62,6 +65,8 @@ class RegisterView(View):
             user_profile = UserProfile()
             user_profile.username = user_name
             user_profile.email = user_name
+            """ 用户未激活,设置为False， 用户点击激活链接以后才激活帐户 """
+            user_profile.is_active = False
             """ 加密密文 """
             user_profile.password = make_password(pass_word)
             user_profile.save()
@@ -72,3 +77,18 @@ class RegisterView(View):
             return render(request, "login.html", )
         else:
             return render(request, "register.html", {"register_form": register_form })
+
+
+class ActiveUserView(View):
+    """ 激活用户"""
+    def get(self, request, active_code):
+        all_record = EmailVerifyRecord.objects.filter(code=active_code)
+        if all_record:
+            for record  in all_record:
+                email = record.email
+                """ 通过邮箱反查找用户  """
+                user= UserProfile.objects.get(email=email)
+                user.is_active = True
+                user.save()
+            return render(request, "login.html", )
+
