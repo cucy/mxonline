@@ -34,7 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 
-AUTHENTICATION_BACKENDS  = (
+AUTHENTICATION_BACKENDS = (
     'users.views.CustomBackend',
 )
 
@@ -60,7 +60,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -142,3 +142,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+EMAIL_HOST = "smtp.sina.com"
+EMAIL_PORT = 25
+EMAIL_HOST_USER = "zhourudong2017@sina.com"
+EMAIL_HOST_PASSWORD = "181171aa"
+EMAIL_USE = False
+EMAIL_FROM = "zhourudong2017@sina.com"
