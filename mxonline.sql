@@ -82,7 +82,7 @@ CREATE TABLE `auth_permission` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `auth_permission_content_type_id_01ab375a_uniq` (`content_type_id`,`codename`),
   CONSTRAINT `auth_permissi_content_type_id_2f476e4b_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -374,7 +374,7 @@ CREATE TABLE `django_content_type` (
   `model` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `django_content_type_app_label_76bd3d3b_uniq` (`app_label`,`model`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -400,7 +400,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -409,7 +409,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2017-03-31 03:45:51.758000'),(2,'auth','0001_initial','2017-03-31 03:45:52.905000'),(3,'admin','0001_initial','2017-03-31 03:45:53.205000'),(4,'admin','0002_logentry_remove_auto_add','2017-03-31 03:45:53.243000'),(5,'contenttypes','0002_remove_content_type_name','2017-03-31 03:45:53.457000'),(6,'auth','0002_alter_permission_name_max_length','2017-03-31 03:45:53.591000'),(7,'auth','0003_alter_user_email_max_length','2017-03-31 03:45:53.737000'),(8,'auth','0004_alter_user_username_opts','2017-03-31 03:45:53.762000'),(9,'auth','0005_alter_user_last_login_null','2017-03-31 03:45:53.864000'),(10,'auth','0006_require_contenttypes_0002','2017-03-31 03:45:53.872000'),(11,'auth','0007_alter_validators_add_error_messages','2017-03-31 03:45:53.891000'),(12,'sessions','0001_initial','2017-03-31 03:45:53.992000'),(13,'users','0001_initial','2017-03-31 04:30:14.036000'),(14,'users','0002_banner_emailverifyrecord','2017-03-31 06:46:48.380000'),(15,'courses','0001_initial','2017-03-31 10:31:26.726000'),(16,'operation','0001_initial','2017-03-31 10:31:27.586000'),(17,'operation','0002_auto_20170331_1831','2017-03-31 10:31:27.599000'),(18,'organization','0001_initial','2017-03-31 10:31:27.971000'),(19,'captcha','0001_initial','2017-04-04 10:26:42.731000'),(20,'courses','0002_auto_20170402_1203','2017-04-04 10:26:42.783000'),(21,'operation','0002_auto_20170331_1332','2017-04-04 10:27:17.503000'),(22,'operation','0003_remove_userfavorite_course','2017-04-04 10:27:17.514000'),(23,'users','0002_auto_20170331_2305','2017-04-04 10:27:17.538000'),(24,'users','0003_auto_20170331_2313','2017-04-04 10:27:17.548000'),(25,'users','0004_auto_20170331_2332','2017-04-04 10:27:17.557000'),(26,'users','0005_auto_20170401_0029','2017-04-04 10:27:17.565000'),(27,'xadmin','0001_initial','2017-04-04 10:27:17.572000'),(30,'users','0006_auto_20170404_1034','2017-04-04 10:34:14.889000'),(36,'organization','0002_auto_20170404_1848','2017-04-04 18:57:45.713000'),(37,'xadmin','0002_log','2017-04-04 22:20:09.804798'),(38,'xadmin','0003_auto_20160715_0100','2017-04-04 22:20:18.054697'),(39,'organization','0002_auto_20170404_2230','2017-04-04 22:30:58.881866'),(40,'organization','0003_auto_20170404_2242','2017-04-04 22:43:22.534466');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2017-03-31 03:45:51.758000'),(2,'auth','0001_initial','2017-03-31 03:45:52.905000'),(3,'admin','0001_initial','2017-03-31 03:45:53.205000'),(4,'admin','0002_logentry_remove_auto_add','2017-03-31 03:45:53.243000'),(5,'contenttypes','0002_remove_content_type_name','2017-03-31 03:45:53.457000'),(6,'auth','0002_alter_permission_name_max_length','2017-03-31 03:45:53.591000'),(7,'auth','0003_alter_user_email_max_length','2017-03-31 03:45:53.737000'),(8,'auth','0004_alter_user_username_opts','2017-03-31 03:45:53.762000'),(9,'auth','0005_alter_user_last_login_null','2017-03-31 03:45:53.864000'),(10,'auth','0006_require_contenttypes_0002','2017-03-31 03:45:53.872000'),(11,'auth','0007_alter_validators_add_error_messages','2017-03-31 03:45:53.891000'),(12,'sessions','0001_initial','2017-03-31 03:45:53.992000'),(13,'users','0001_initial','2017-03-31 04:30:14.036000'),(14,'users','0002_banner_emailverifyrecord','2017-03-31 06:46:48.380000'),(15,'courses','0001_initial','2017-03-31 10:31:26.726000'),(16,'operation','0001_initial','2017-03-31 10:31:27.586000'),(17,'operation','0002_auto_20170331_1831','2017-03-31 10:31:27.599000'),(18,'organization','0001_initial','2017-03-31 10:31:27.971000'),(19,'captcha','0001_initial','2017-04-04 10:26:42.731000'),(20,'courses','0002_auto_20170402_1203','2017-04-04 10:26:42.783000'),(21,'operation','0002_auto_20170331_1332','2017-04-04 10:27:17.503000'),(22,'operation','0003_remove_userfavorite_course','2017-04-04 10:27:17.514000'),(23,'users','0002_auto_20170331_2305','2017-04-04 10:27:17.538000'),(24,'users','0003_auto_20170331_2313','2017-04-04 10:27:17.548000'),(25,'users','0004_auto_20170331_2332','2017-04-04 10:27:17.557000'),(26,'users','0005_auto_20170401_0029','2017-04-04 10:27:17.565000'),(27,'xadmin','0001_initial','2017-04-04 10:27:17.572000'),(30,'users','0006_auto_20170404_1034','2017-04-04 10:34:14.889000'),(36,'organization','0002_auto_20170404_1848','2017-04-04 18:57:45.713000'),(37,'xadmin','0002_log','2017-04-04 22:20:09.804798'),(38,'xadmin','0003_auto_20160715_0100','2017-04-04 22:20:18.054697'),(39,'organization','0002_auto_20170404_2230','2017-04-04 22:30:58.881866'),(40,'organization','0003_auto_20170404_2242','2017-04-04 22:43:22.534466'),(41,'organization','0004_auto_20170405_2312','2017-04-05 23:14:05.695130'),(42,'organization','0005_auto_20170405_2313','2017-04-05 23:14:05.704427');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -435,7 +435,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('iupi8z86bmkjc9x030sw8qy154nhci2m','YjBlMzI2YTU1NGZjN2FkOTVmNjIzNWJhZjRlMTg5OWJlMjVhYjRhYzp7Il9hdXRoX3VzZXJfYmFja2VuZCI6InVzZXJzLnZpZXdzLkN1c3RvbUJhY2tlbmQiLCJMSVNUX1FVRVJZIjpbWyJvcmdhbml6YXRpb24iLCJjaXR5ZGljdCJdLCIiXSwiX2F1dGhfdXNlcl9oYXNoIjoiMTNhZmIwZjBjYmQzZTEwYzMwYjYzMzFmNzA1OWUwNTA4NDc0NDU4ZiIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=','2017-04-18 23:00:39.100307'),('k87y3pf5ih08458clylfi6yfg7cza9hn','YzRhNWFlYWRlNzI5ZTQ0ODNkZjljMjE1NTlmZTZkZjJlMjdmN2I3OTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiTElTVF9RVUVSWSI6W1sib3JnYW5pemF0aW9uIiwiY291cnNlb3JnIl0sIiJdLCJfYXV0aF91c2VyX2hhc2giOiIxM2FmYjBmMGNiZDNlMTBjMzBiNjMzMWY3MDU5ZTA1MDg0NzQ0NThmIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoidXNlcnMudmlld3MuQ3VzdG9tQmFja2VuZCJ9','2017-04-18 18:58:10.087000');
+INSERT INTO `django_session` VALUES ('iupi8z86bmkjc9x030sw8qy154nhci2m','YzRhNWFlYWRlNzI5ZTQ0ODNkZjljMjE1NTlmZTZkZjJlMjdmN2I3OTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiTElTVF9RVUVSWSI6W1sib3JnYW5pemF0aW9uIiwiY291cnNlb3JnIl0sIiJdLCJfYXV0aF91c2VyX2hhc2giOiIxM2FmYjBmMGNiZDNlMTBjMzBiNjMzMWY3MDU5ZTA1MDg0NzQ0NThmIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoidXNlcnMudmlld3MuQ3VzdG9tQmFja2VuZCJ9','2017-04-19 22:45:29.761366'),('k87y3pf5ih08458clylfi6yfg7cza9hn','YzRhNWFlYWRlNzI5ZTQ0ODNkZjljMjE1NTlmZTZkZjJlMjdmN2I3OTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiTElTVF9RVUVSWSI6W1sib3JnYW5pemF0aW9uIiwiY291cnNlb3JnIl0sIiJdLCJfYXV0aF91c2VyX2hhc2giOiIxM2FmYjBmMGNiZDNlMTBjMzBiNjMzMWY3MDU5ZTA1MDg0NzQ0NThmIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoidXNlcnMudmlld3MuQ3VzdG9tQmFja2VuZCJ9','2017-04-18 18:58:10.087000');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -625,6 +625,8 @@ CREATE TABLE `organization_courseorg` (
   `add_time` datetime(6) NOT NULL,
   `city_id` int(11) NOT NULL,
   `category` varchar(20) NOT NULL,
+  `course_nums` int(11) NOT NULL,
+  `students` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `organization_course_city_id_4a842f85_fk_organization_citydict_id` (`city_id`),
   CONSTRAINT `organization_course_city_id_4a842f85_fk_organization_citydict_id` FOREIGN KEY (`city_id`) REFERENCES `organization_citydict` (`id`)
@@ -637,7 +639,7 @@ CREATE TABLE `organization_courseorg` (
 
 LOCK TABLES `organization_courseorg` WRITE;
 /*!40000 ALTER TABLE `organization_courseorg` DISABLE KEYS */;
-INSERT INTO `organization_courseorg` VALUES (1,'慕课网','慕课网在线网  机构描 描述想嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻',0,0,'org/2017/04/imooc.png','北京市','2017-04-04 18:25:00.000000',2,'pxjg'),(2,'北京大学','北京大学 机构描述',0,0,'org/2017/04/bjdx.jpg','北京北京大学','2017-04-04 18:29:00.000000',2,'pxjg'),(3,'慕课网1','慕课网1',0,0,'org/2017/04/imooc_Gn1sRjp.png','北京市00001','2017-04-04 18:30:00.000000',2,'pxjg'),(4,'慕课网2','慕课网2 222',0,0,'org/2017/04/imooc_klgAUn5.png','北京市00002','2017-04-04 18:31:00.000000',2,'pxjg'),(5,'清华大学','清华大学122222222222222222',0,0,'org/2017/04/qhdx-logo.png','清华大学地址','2017-04-04 18:32:00.000000',2,'pxjg'),(6,'慕课网3','慕课网333333333333333333333333333333333333333333333333',0,0,'org/2017/04/imooc_OO2ykYP.png','慕课网333333','2017-04-04 18:33:00.000000',2,'pxjg'),(7,'南京大学','南京大学 描述',0,0,'org/2017/04/njdx.jpg','南京大学地址','2017-04-04 18:34:00.000000',4,'pxjg'),(8,'天津大学','天津大学 机构',0,0,'org/2017/04/tjdx.jpg','天津大学','2017-04-04 18:35:00.000000',5,'pxjg'),(9,'广州大学','广州大学 机构',0,0,'org/2017/04/guangzhoudx.jpg','广州大学地址','2017-04-04 18:37:00.000000',3,'pxjg'),(10,'深圳大学','深圳大学 描述',0,0,'org/2017/04/shenzhendaxue.jpg','深圳大学地址','2017-04-04 18:38:00.000000',4,'pxjg'),(11,'上海大学','上海大学',0,0,'org/2017/04/shanghaidx.jpg','上海市','2017-04-04 18:40:00.000000',1,'pxjg'),(12,'北京航空航天大学','北京航空航天大学 . miaosu',0,0,'org/2017/04/bjhtdx.jpg','北京市航天xxxxx','2017-04-04 22:24:00.000000',3,'pxjg');
+INSERT INTO `organization_courseorg` VALUES (1,'慕课网','慕课网在线网  机构描 描述想嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻',0,0,'org/2017/04/imooc.png','北京市','2017-04-04 18:25:00.000000',2,'pxjg',0,0),(2,'北京大学','北京大学 机构描述',0,0,'org/2017/04/bjdx.jpg','北京北京大学','2017-04-04 18:29:00.000000',2,'pxjg',0,0),(3,'慕课网1','慕课网1',0,0,'org/2017/04/imooc_Gn1sRjp.png','北京市00001','2017-04-04 18:30:00.000000',2,'pxjg',0,0),(4,'慕课网2','慕课网2 222',0,0,'org/2017/04/imooc_klgAUn5.png','北京市00002','2017-04-04 18:31:00.000000',2,'gr',0,0),(5,'清华大学','清华大学122222222222222222',0,0,'org/2017/04/qhdx-logo.png','清华大学地址','2017-04-04 18:32:00.000000',2,'pxjg',0,0),(6,'慕课网3','慕课网333333333333333333333333333333333333333333333333',0,0,'org/2017/04/imooc_OO2ykYP.png','慕课网333333','2017-04-04 18:33:00.000000',2,'pxjg',0,0),(7,'南京大学','南京大学 描述',0,0,'org/2017/04/njdx.jpg','南京大学地址','2017-04-04 18:34:00.000000',6,'pxjg',0,0),(8,'天津大学','天津大学 机构',0,0,'org/2017/04/tjdx.jpg','天津大学','2017-04-04 18:35:00.000000',5,'pxjg',0,0),(9,'广州大学','广州大学 机构',0,0,'org/2017/04/guangzhoudx.jpg','广州大学地址','2017-04-04 18:37:00.000000',3,'pxjg',0,0),(10,'深圳大学','深圳大学 描述',0,0,'org/2017/04/shenzhendaxue.jpg','深圳大学地址','2017-04-04 18:38:00.000000',4,'pxjg',0,0),(11,'上海大学','上海大学',0,0,'org/2017/04/shanghaidx.jpg','上海市','2017-04-04 18:40:00.000000',1,'pxjg',0,0),(12,'北京航空航天大学','北京航空航天大学 . miaosu',0,0,'org/2017/04/bjhtdx.jpg','北京市航天xxxxx','2017-04-04 22:24:00.000000',3,'gx',0,0);
 /*!40000 ALTER TABLE `organization_courseorg` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -712,7 +714,7 @@ CREATE TABLE `users_emailverifyrecord` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `send_type` varchar(5) NOT NULL,
+  `send_type` varchar(8) NOT NULL,
   `send_time` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -877,7 +879,7 @@ CREATE TABLE `xadmin_log` (
   KEY `xadmin_log_user_id_bb16a176_fk_users_userprofile_id` (`user_id`),
   CONSTRAINT `xadmin_log_content_type_id_2a6cb852_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `xadmin_log_user_id_bb16a176_fk_users_userprofile_id` FOREIGN KEY (`user_id`) REFERENCES `users_userprofile` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -886,7 +888,7 @@ CREATE TABLE `xadmin_log` (
 
 LOCK TABLES `xadmin_log` WRITE;
 /*!40000 ALTER TABLE `xadmin_log` DISABLE KEYS */;
-INSERT INTO `xadmin_log` VALUES (1,'2017-04-04 18:25:29.231000','127.0.0.1','1','CourseOrg object','create','已添加。',15,1),(2,'2017-04-04 18:27:33.628000','127.0.0.1','1','慕课网','change','没有字段被修改。',15,1),(3,'2017-04-04 18:30:37.257000','127.0.0.1','2','北京大学','create','已添加。',15,1),(4,'2017-04-04 18:31:33.404000','127.0.0.1','3','慕课网1','create','已添加。',15,1),(5,'2017-04-04 18:32:12.387000','127.0.0.1','4','慕课网2','create','已添加。',15,1),(6,'2017-04-04 18:33:07.178000','127.0.0.1','5','清华大学','create','已添加。',15,1),(7,'2017-04-04 18:33:40.319000','127.0.0.1','6','慕课网3','create','已添加。',15,1),(8,'2017-04-04 18:34:54.033000','127.0.0.1','7','南京大学','create','已添加。',15,1),(9,'2017-04-04 18:36:06.083000','127.0.0.1','8','天津大学','create','已添加。',15,1),(10,'2017-04-04 18:37:56.153000','127.0.0.1','9','广州大学','create','已添加。',15,1),(11,'2017-04-04 18:39:02.446000','127.0.0.1','10','深圳大学','create','已添加。',15,1),(12,'2017-04-04 18:41:40.051000','127.0.0.1','11','上海大学','create','已添加。',15,1),(13,'2017-04-04 22:32:47.787712','127.0.0.1','12','北京航空航天大学','create','已添加。',15,1),(14,'2017-04-04 23:00:38.990640','127.0.0.1','6','南京市','create','已添加。',14,1);
+INSERT INTO `xadmin_log` VALUES (1,'2017-04-04 18:25:29.231000','127.0.0.1','1','CourseOrg object','create','已添加。',15,1),(2,'2017-04-04 18:27:33.628000','127.0.0.1','1','慕课网','change','没有字段被修改。',15,1),(3,'2017-04-04 18:30:37.257000','127.0.0.1','2','北京大学','create','已添加。',15,1),(4,'2017-04-04 18:31:33.404000','127.0.0.1','3','慕课网1','create','已添加。',15,1),(5,'2017-04-04 18:32:12.387000','127.0.0.1','4','慕课网2','create','已添加。',15,1),(6,'2017-04-04 18:33:07.178000','127.0.0.1','5','清华大学','create','已添加。',15,1),(7,'2017-04-04 18:33:40.319000','127.0.0.1','6','慕课网3','create','已添加。',15,1),(8,'2017-04-04 18:34:54.033000','127.0.0.1','7','南京大学','create','已添加。',15,1),(9,'2017-04-04 18:36:06.083000','127.0.0.1','8','天津大学','create','已添加。',15,1),(10,'2017-04-04 18:37:56.153000','127.0.0.1','9','广州大学','create','已添加。',15,1),(11,'2017-04-04 18:39:02.446000','127.0.0.1','10','深圳大学','create','已添加。',15,1),(12,'2017-04-04 18:41:40.051000','127.0.0.1','11','上海大学','create','已添加。',15,1),(13,'2017-04-04 22:32:47.787712','127.0.0.1','12','北京航空航天大学','create','已添加。',15,1),(14,'2017-04-04 23:00:38.990640','127.0.0.1','6','南京市','create','已添加。',14,1),(15,'2017-04-05 22:42:50.490588','127.0.0.1','12','北京航空航天大学','change','已修改 category 。',15,1),(16,'2017-04-05 22:44:29.943686','127.0.0.1','4','慕课网2','change','已修改 category 。',15,1),(17,'2017-04-05 22:45:29.636258','127.0.0.1','7','南京大学','change','已修改 city 。',15,1);
 /*!40000 ALTER TABLE `xadmin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -955,4 +957,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-04 23:39:58
+-- Dump completed on 2017-04-05 23:33:00
