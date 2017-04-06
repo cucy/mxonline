@@ -30,13 +30,11 @@ class OrgView(View):
             ''' 进一步进行筛选 '''
             all_orgs = all_orgs.filter(city_id=int(city_id))
 
-
-        #  类别筛选
+        # 类别筛选
         category = request.GET.get('ct', '')
         if category:
             ''' 进一步进行筛选 '''
             all_orgs = all_orgs.filter(category=category)
-
 
         # 排序
         sort = request.GET.get('ct', '')
@@ -45,7 +43,6 @@ class OrgView(View):
                 all_orgs = all_orgs.order_by("-students")
             elif sort == "courses":
                 all_orgs = all_orgs.order_by("-course_nums")
-
 
         org_nums = all_orgs.count()
 
@@ -63,8 +60,8 @@ class OrgView(View):
             "all_orgs": orgs,
             "all_citys": all_citys,
             "org_nums": org_nums,
-            "city_id": city_id,  #  city_id 进行筛选
-            'category':category,
-            'hot_orgs':hot_orgs,
-            'sort':sort,
+            "city_id": city_id,  # city_id 进行筛选
+            'category': category,
+            'hot_orgs': hot_orgs,
+            'sort': sort,
         })
