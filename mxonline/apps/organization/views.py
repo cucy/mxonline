@@ -88,7 +88,28 @@ class OrgHomeView(View):
         机构首页
     """
     def get(self, request, org_id):
+        current_page = "home"
         coures_org = CourseOrg.objects.get(id=int(org_id))
-        all_courses = coures_org
+        all_courses = coures_org.course_set.all()[:3]  # 通过外键 反向获取course（课程）取3个
+        all_teachers = coures_org.teacher_set.all() [:3]
+        return render(request, 'org-detail-homepage.html', {
+            'all_courses': all_courses,
+            'all_teachers': all_teachers,
+            'coures_org': coures_org,
+            'current_page': current_page,
+        })
 
 
+class OrgCourseView(View):
+    """
+        机构课程列表页
+    """
+    def get(self, request, org_id):
+        current_page = "course"
+        coures_org = CourseOrg.objects.get(id=int(org_id))
+        all_courses = coures_org.course_set.all()  # 通过外键 反向获取course（课程）取3个
+        return render(request, 'org-detail-course.html', {
+            'all_courses': all_courses,
+            'coures_org': coures_org,
+            'current_page': current_page,
+        })

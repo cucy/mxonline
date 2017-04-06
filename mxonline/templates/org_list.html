@@ -58,9 +58,9 @@
                         {% for course_org in all_orgs.object_list %}
                             <dl class="des difdes">
                                 <dt>
-                                    <a href="org-detail-homepage.html">
-                                        <img width="200" height="120" class="scrollLoading"
-                                             data-url="{{ MEDIA_URL }}{{ course_org.image }}"/>
+                                    {# 直接让页面跳转 namespace空格 后面传入url需要带的参数 #}
+                                    <a href="{% url 'org:org_home' course_org.id %}">
+                                        <img width="200" height="120" class="scrollLoading" data-url="{{ MEDIA_URL }}{{ course_org.image }}"/>
                                     </a>
                                 </dt>
                                 <dd>
