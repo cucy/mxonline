@@ -113,3 +113,46 @@ class OrgCourseView(View):
             'coures_org': coures_org,
             'current_page': current_page,
         })
+
+
+class OrgDescView(View):
+    """
+        机构介绍
+    """
+    def get(self, request, org_id):
+        current_page = "desc"
+        coures_org = CourseOrg.objects.get(id=int(org_id))
+
+        return render(request, 'org-detail-desc.html', {
+            'coures_org': coures_org,
+            'current_page': current_page,
+        })
+
+
+class OrgTeacherView(View):
+    """
+        机构教师列表页面
+    """
+    def get(self, request, org_id):
+        current_page = "teacher"
+        coures_org = CourseOrg.objects.get(id=int(org_id))
+        all_teachers = coures_org.teacher_set.all()  # 通过外键 反向获取
+        return render(request, 'org-detail-teachers.html', {
+            'all_teachers': all_teachers,
+            'coures_org': coures_org,
+            'current_page': current_page,
+        })
+
+
+class AddFavView(View):
+    ''' 用户收藏 '''
+
+    def post(self, request):
+        fav_id = request.POST.get('fav_id', "")
+        fav_type = request.POST.get('fav_type', "")
+
+        # is_authenticated 判断用户是否登陆
+        if not request.user.is_authenticated():
+            return HttpResponse("{'status': 'fail', 'msg': '用户未登录'}",
+                                content_type='application/json')
+

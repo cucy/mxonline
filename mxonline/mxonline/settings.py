@@ -29,7 +29,7 @@ SECRET_KEY = 'tpa&9m)cos&h!-9ai(#=w9_&eeoun95i0g4cq#!5fl!=4a)cxc'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.51']
+ALLOWED_HOSTS = ['192.168.1.51','127.0.0.1']
 
 # Application definition
 
@@ -101,7 +101,7 @@ DATABASES = {
         'NAME': 'mxonline',
         'USER': 'zrd',
         'PASSWORD': '123456',
-        'HOST': '192.168.1.82',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
