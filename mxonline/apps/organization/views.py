@@ -6,7 +6,7 @@ from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import CourseOrg, CityDict
 from .forms import UserAskForm
-
+from courses.models import Course
 
 # Create your views here.
 
@@ -81,3 +81,14 @@ class AddUserAskView(View):
         else:
             return HttpResponse("{'status': 'fail', 'msg': '添加出错'}",
                                 content_type='application/json')
+
+
+class OrgHomeView(View):
+    """
+        机构首页
+    """
+    def get(self, request, org_id):
+        coures_org = CourseOrg.objects.get(id=int(org_id))
+        all_courses = coures_org
+
+
