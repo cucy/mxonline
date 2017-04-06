@@ -2,11 +2,14 @@
 from __future__ import unicode_literals
 from datetime import datetime
 
+from organization.models import CourseOrg
 from django.db import models
 
 
 # Create your models here.
 class Course(models.Model):
+    # 课程外键关联到某个机构中
+    course_org = models.ForeignKey(CourseOrg, null=True, blank=True,verbose_name=u'课程机构')
     name = models.CharField(max_length=50, verbose_name=u'课程名')
     desc = models.CharField(max_length=300, verbose_name=u'课程描述')
     detail = models.TextField(verbose_name=u'课程详情')
