@@ -28,6 +28,9 @@ class Course(models.Model):
     def __unicode__(self):
         return self.name
 
+    def get_zj_nums(self):
+        # self 当前课程的实例lesson_set 指向Lesson
+        all_lessons = self.lesson_set.all().count()
 
 class Lesson(models.Model):
     course = models.ForeignKey(Course, verbose_name=u'课程')
