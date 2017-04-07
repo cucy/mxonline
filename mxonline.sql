@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.35, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.35, for macos10.12 (x86_64)
 --
--- Host: localhost    Database: mxonline
+-- Host: 127.0.0.1    Database: mxonline
 -- ------------------------------------------------------
--- Server version	5.6.35-log
+-- Server version	5.6.35
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -82,7 +82,7 @@ CREATE TABLE `auth_permission` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `auth_permission_content_type_id_01ab375a_uniq` (`content_type_id`,`codename`),
   CONSTRAINT `auth_permissi_content_type_id_2f476e4b_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -232,7 +232,9 @@ CREATE TABLE `courses_course` (
   `image` varchar(100) NOT NULL,
   `click_nums` int(11) NOT NULL,
   `add_time` datetime(6) NOT NULL,
-  `course_org_id` int(11),
+  `course_org_id` int(11) DEFAULT NULL,
+  `category` varchar(20) NOT NULL,
+  `tag` varchar(10) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `courses_course_11456c5a` (`course_org_id`),
   CONSTRAINT `courses_cour_course_org_id_4d2c4aab_fk_organization_courseorg_id` FOREIGN KEY (`course_org_id`) REFERENCES `organization_courseorg` (`id`)
@@ -245,7 +247,7 @@ CREATE TABLE `courses_course` (
 
 LOCK TABLES `courses_course` WRITE;
 /*!40000 ALTER TABLE `courses_course` DISABLE KEYS */;
-INSERT INTO `courses_course` VALUES (1,'django入门','django入门 描述','django入门 详情','cj',1,1,0,'courses/2017/04/57035ff200014b8a06000338-240-135.jpg',0,'2017-04-06 15:49:00.000000',1),(2,'python入门','python入门 点点滴滴','python入门 详情','cj',0,3,0,'courses/2017/04/540e57300001d6d906000338-240-135.jpg',0,'2017-04-07 15:08:00.000000',2),(3,'java入门','java入门 描述','java入门 详情','gj',0,2,0,'courses/2017/04/57035ff200014b8a06000338-240-135_0nFiBSI.jpg',0,'2017-04-07 15:09:00.000000',4),(4,'go中级','go中级描述','go中级描述','zj',0,0,0,'courses/2017/04/python面向对象.jpg',0,'2017-04-07 15:09:00.000000',1),(5,'python错误异常','python错误异常 描述','python错误异常 描述详情','cj',0,0,0,'courses/2017/04/python错误和异常.jpg',0,'2017-04-07 15:10:00.000000',5),(6,'python面向对象','python面向对象 描述','python面向对象 描述详情','cj',0,0,0,'courses/2017/04/python面向对象_Q7bDNUz.jpg',0,'2017-04-07 15:11:00.000000',6),(7,'python文件处理','python文件处理 描述','python文件处理 描述 详情','zj',0,0,0,'courses/2017/04/python文件处理.jpg',0,'2017-04-07 15:12:00.000000',5),(8,'mysql复制','mysql复制 描述','mysql复制 描述 详情','gj',13,0,0,'courses/2017/04/mysql.jpg',3,'2017-04-07 15:12:00.000000',10),(9,'python入门1','python入门1 描述','python入门1 详情','gj',12,0,0,'courses/2017/04/540e57300001d6d906000338-240-135_wH52IED.jpg',2,'2017-04-07 15:13:00.000000',9),(10,'python入门2','python入门2 描述','python入门2 描述详情','cj',0,0,0,'courses/2017/04/540e57300001d6d906000338-240-135_n0L8vbw.jpg',1,'2017-04-07 15:14:00.000000',8);
+INSERT INTO `courses_course` VALUES (1,'django入门','django入门 描述','django入门 详情','cj',1,1,0,'courses/2017/04/57035ff200014b8a06000338-240-135.jpg',3,'2017-04-06 15:49:00.000000',1,'后端开发',''),(2,'python入门','python入门 点点滴滴','python入门 详情','cj',0,3,0,'courses/2017/04/540e57300001d6d906000338-240-135.jpg',18,'2017-04-07 15:08:00.000000',2,'后端开发',''),(3,'java入门','java入门 描述','java入门 详情','gj',0,2,0,'courses/2017/04/57035ff200014b8a06000338-240-135_0nFiBSI.jpg',1,'2017-04-07 15:09:00.000000',4,'后端开发',''),(4,'go中级','go中级描述','go中级描述','zj',0,0,0,'courses/2017/04/python面向对象.jpg',0,'2017-04-07 15:09:00.000000',1,'后端开发',''),(5,'python错误异常','python错误异常 描述','python错误异常 描述详情','cj',0,0,0,'courses/2017/04/python错误和异常.jpg',0,'2017-04-07 15:10:00.000000',5,'后端开发',''),(6,'python面向对象','python面向对象 描述','python面向对象 描述详情','cj',0,0,0,'courses/2017/04/python面向对象_Q7bDNUz.jpg',0,'2017-04-07 15:11:00.000000',6,'后端开发',''),(7,'python文件处理','python文件处理 描述','python文件处理 描述 详情','zj',0,0,0,'courses/2017/04/python文件处理.jpg',1,'2017-04-07 15:12:00.000000',5,'后端开发','python'),(8,'mysql复制','mysql复制 描述','mysql复制 描述 详情','gj',13,0,0,'courses/2017/04/mysql.jpg',8,'2017-04-07 15:12:00.000000',10,'后端开发',''),(9,'python入门1','python入门1 描述','python入门1 详情','gj',12,0,0,'courses/2017/04/540e57300001d6d906000338-240-135_wH52IED.jpg',4,'2017-04-07 15:13:00.000000',9,'后端开发','python'),(10,'python入门2','python入门2 描述','python入门2 描述详情','cj',0,0,0,'courses/2017/04/540e57300001d6d906000338-240-135_n0L8vbw.jpg',12,'2017-04-07 15:14:00.000000',8,'后端开发','python');
 /*!40000 ALTER TABLE `courses_course` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -378,7 +380,7 @@ CREATE TABLE `django_content_type` (
   `model` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `django_content_type_app_label_76bd3d3b_uniq` (`app_label`,`model`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -404,7 +406,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -413,7 +415,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2017-03-31 03:45:51.758000'),(2,'auth','0001_initial','2017-03-31 03:45:52.905000'),(3,'admin','0001_initial','2017-03-31 03:45:53.205000'),(4,'admin','0002_logentry_remove_auto_add','2017-03-31 03:45:53.243000'),(5,'contenttypes','0002_remove_content_type_name','2017-03-31 03:45:53.457000'),(6,'auth','0002_alter_permission_name_max_length','2017-03-31 03:45:53.591000'),(7,'auth','0003_alter_user_email_max_length','2017-03-31 03:45:53.737000'),(8,'auth','0004_alter_user_username_opts','2017-03-31 03:45:53.762000'),(9,'auth','0005_alter_user_last_login_null','2017-03-31 03:45:53.864000'),(10,'auth','0006_require_contenttypes_0002','2017-03-31 03:45:53.872000'),(11,'auth','0007_alter_validators_add_error_messages','2017-03-31 03:45:53.891000'),(12,'sessions','0001_initial','2017-03-31 03:45:53.992000'),(13,'users','0001_initial','2017-03-31 04:30:14.036000'),(14,'users','0002_banner_emailverifyrecord','2017-03-31 06:46:48.380000'),(15,'courses','0001_initial','2017-03-31 10:31:26.726000'),(16,'operation','0001_initial','2017-03-31 10:31:27.586000'),(17,'operation','0002_auto_20170331_1831','2017-03-31 10:31:27.599000'),(18,'organization','0001_initial','2017-03-31 10:31:27.971000'),(19,'captcha','0001_initial','2017-04-04 10:26:42.731000'),(20,'courses','0002_auto_20170402_1203','2017-04-04 10:26:42.783000'),(21,'operation','0002_auto_20170331_1332','2017-04-04 10:27:17.503000'),(22,'operation','0003_remove_userfavorite_course','2017-04-04 10:27:17.514000'),(23,'users','0002_auto_20170331_2305','2017-04-04 10:27:17.538000'),(24,'users','0003_auto_20170331_2313','2017-04-04 10:27:17.548000'),(25,'users','0004_auto_20170331_2332','2017-04-04 10:27:17.557000'),(26,'users','0005_auto_20170401_0029','2017-04-04 10:27:17.565000'),(27,'xadmin','0001_initial','2017-04-04 10:27:17.572000'),(30,'users','0006_auto_20170404_1034','2017-04-04 10:34:14.889000'),(36,'organization','0002_auto_20170404_1848','2017-04-04 18:57:45.713000'),(37,'xadmin','0002_log','2017-04-04 22:20:09.804798'),(38,'xadmin','0003_auto_20160715_0100','2017-04-04 22:20:18.054697'),(39,'organization','0002_auto_20170404_2230','2017-04-04 22:30:58.881866'),(40,'organization','0003_auto_20170404_2242','2017-04-04 22:43:22.534466'),(41,'organization','0004_auto_20170405_2312','2017-04-05 23:14:05.695130'),(42,'organization','0005_auto_20170405_2313','2017-04-05 23:14:05.704427'),(43,'operation','0004_auto_20170406_1417','2017-04-06 14:17:46.536920'),(44,'organization','0006_auto_20170406_1417','2017-04-06 14:18:07.561306'),(45,'operation','0005_auto_20170406_1524','2017-04-06 15:24:55.152078'),(46,'organization','0007_auto_20170406_1547','2017-04-06 15:48:01.490465'),(47,'courses','0003_course_course_org','2017-04-06 15:48:01.759891'),(48,'organization','0008_teacher_image','2017-04-06 18:32:49.336832');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2017-03-31 03:45:51.758000'),(2,'auth','0001_initial','2017-03-31 03:45:52.905000'),(3,'admin','0001_initial','2017-03-31 03:45:53.205000'),(4,'admin','0002_logentry_remove_auto_add','2017-03-31 03:45:53.243000'),(5,'contenttypes','0002_remove_content_type_name','2017-03-31 03:45:53.457000'),(6,'auth','0002_alter_permission_name_max_length','2017-03-31 03:45:53.591000'),(7,'auth','0003_alter_user_email_max_length','2017-03-31 03:45:53.737000'),(8,'auth','0004_alter_user_username_opts','2017-03-31 03:45:53.762000'),(9,'auth','0005_alter_user_last_login_null','2017-03-31 03:45:53.864000'),(10,'auth','0006_require_contenttypes_0002','2017-03-31 03:45:53.872000'),(11,'auth','0007_alter_validators_add_error_messages','2017-03-31 03:45:53.891000'),(12,'sessions','0001_initial','2017-03-31 03:45:53.992000'),(13,'users','0001_initial','2017-03-31 04:30:14.036000'),(14,'users','0002_banner_emailverifyrecord','2017-03-31 06:46:48.380000'),(15,'courses','0001_initial','2017-03-31 10:31:26.726000'),(16,'operation','0001_initial','2017-03-31 10:31:27.586000'),(17,'operation','0002_auto_20170331_1831','2017-03-31 10:31:27.599000'),(18,'organization','0001_initial','2017-03-31 10:31:27.971000'),(19,'captcha','0001_initial','2017-04-04 10:26:42.731000'),(20,'courses','0002_auto_20170402_1203','2017-04-04 10:26:42.783000'),(21,'operation','0002_auto_20170331_1332','2017-04-04 10:27:17.503000'),(22,'operation','0003_remove_userfavorite_course','2017-04-04 10:27:17.514000'),(23,'users','0002_auto_20170331_2305','2017-04-04 10:27:17.538000'),(24,'users','0003_auto_20170331_2313','2017-04-04 10:27:17.548000'),(25,'users','0004_auto_20170331_2332','2017-04-04 10:27:17.557000'),(26,'users','0005_auto_20170401_0029','2017-04-04 10:27:17.565000'),(27,'xadmin','0001_initial','2017-04-04 10:27:17.572000'),(30,'users','0006_auto_20170404_1034','2017-04-04 10:34:14.889000'),(36,'organization','0002_auto_20170404_1848','2017-04-04 18:57:45.713000'),(37,'xadmin','0002_log','2017-04-04 22:20:09.804798'),(38,'xadmin','0003_auto_20160715_0100','2017-04-04 22:20:18.054697'),(39,'organization','0002_auto_20170404_2230','2017-04-04 22:30:58.881866'),(40,'organization','0003_auto_20170404_2242','2017-04-04 22:43:22.534466'),(41,'organization','0004_auto_20170405_2312','2017-04-05 23:14:05.695130'),(42,'organization','0005_auto_20170405_2313','2017-04-05 23:14:05.704427'),(43,'operation','0004_auto_20170406_1417','2017-04-06 14:17:46.536920'),(44,'organization','0006_auto_20170406_1417','2017-04-06 14:18:07.561306'),(45,'operation','0005_auto_20170406_1524','2017-04-06 15:24:55.152078'),(46,'organization','0007_auto_20170406_1547','2017-04-06 15:48:01.490465'),(47,'courses','0003_course_course_org','2017-04-06 15:48:01.759891'),(48,'organization','0008_teacher_image','2017-04-06 18:32:49.336832'),(49,'courses','0004_course_category','2017-04-07 21:19:04.313333'),(50,'courses','0005_course_tag','2017-04-07 21:58:33.445779');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -439,7 +441,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('iupi8z86bmkjc9x030sw8qy154nhci2m','YzRhNWFlYWRlNzI5ZTQ0ODNkZjljMjE1NTlmZTZkZjJlMjdmN2I3OTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiTElTVF9RVUVSWSI6W1sib3JnYW5pemF0aW9uIiwiY291cnNlb3JnIl0sIiJdLCJfYXV0aF91c2VyX2hhc2giOiIxM2FmYjBmMGNiZDNlMTBjMzBiNjMzMWY3MDU5ZTA1MDg0NzQ0NThmIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoidXNlcnMudmlld3MuQ3VzdG9tQmFja2VuZCJ9','2017-04-19 22:45:29.761366'),('k87y3pf5ih08458clylfi6yfg7cza9hn','YzRhNWFlYWRlNzI5ZTQ0ODNkZjljMjE1NTlmZTZkZjJlMjdmN2I3OTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiTElTVF9RVUVSWSI6W1sib3JnYW5pemF0aW9uIiwiY291cnNlb3JnIl0sIiJdLCJfYXV0aF91c2VyX2hhc2giOiIxM2FmYjBmMGNiZDNlMTBjMzBiNjMzMWY3MDU5ZTA1MDg0NzQ0NThmIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoidXNlcnMudmlld3MuQ3VzdG9tQmFja2VuZCJ9','2017-04-18 18:58:10.087000'),('zgxkj9b8ynv0n5ba13lflvgijj5nl7jf','M2NlY2ExYzVjMmQ0NzNkYmY1NDFkOTRmYjU4MjNmMTIxMjQ5ZDI4MTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6InVzZXJzLnZpZXdzLkN1c3RvbUJhY2tlbmQiLCJMSVNUX1FVRVJZIjpbWyJjb3Vyc2VzIiwiY291cnNlIl0sIiJdLCJfYXV0aF91c2VyX2hhc2giOiIxM2FmYjBmMGNiZDNlMTBjMzBiNjMzMWY3MDU5ZTA1MDg0NzQ0NThmIiwiX2F1dGhfdXNlcl9pZCI6IjEifQ==','2017-04-21 15:16:08.533815');
+INSERT INTO `django_session` VALUES ('iupi8z86bmkjc9x030sw8qy154nhci2m','YzRhNWFlYWRlNzI5ZTQ0ODNkZjljMjE1NTlmZTZkZjJlMjdmN2I3OTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiTElTVF9RVUVSWSI6W1sib3JnYW5pemF0aW9uIiwiY291cnNlb3JnIl0sIiJdLCJfYXV0aF91c2VyX2hhc2giOiIxM2FmYjBmMGNiZDNlMTBjMzBiNjMzMWY3MDU5ZTA1MDg0NzQ0NThmIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoidXNlcnMudmlld3MuQ3VzdG9tQmFja2VuZCJ9','2017-04-19 22:45:29.761366'),('k87y3pf5ih08458clylfi6yfg7cza9hn','YzRhNWFlYWRlNzI5ZTQ0ODNkZjljMjE1NTlmZTZkZjJlMjdmN2I3OTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiTElTVF9RVUVSWSI6W1sib3JnYW5pemF0aW9uIiwiY291cnNlb3JnIl0sIiJdLCJfYXV0aF91c2VyX2hhc2giOiIxM2FmYjBmMGNiZDNlMTBjMzBiNjMzMWY3MDU5ZTA1MDg0NzQ0NThmIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoidXNlcnMudmlld3MuQ3VzdG9tQmFja2VuZCJ9','2017-04-18 18:58:10.087000'),('u4m38jqfh90xarzrqvk4197l5arfmq5q','M2NlY2ExYzVjMmQ0NzNkYmY1NDFkOTRmYjU4MjNmMTIxMjQ5ZDI4MTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6InVzZXJzLnZpZXdzLkN1c3RvbUJhY2tlbmQiLCJMSVNUX1FVRVJZIjpbWyJjb3Vyc2VzIiwiY291cnNlIl0sIiJdLCJfYXV0aF91c2VyX2hhc2giOiIxM2FmYjBmMGNiZDNlMTBjMzBiNjMzMWY3MDU5ZTA1MDg0NzQ0NThmIiwiX2F1dGhfdXNlcl9pZCI6IjEifQ==','2017-04-21 22:12:09.009068'),('zgxkj9b8ynv0n5ba13lflvgijj5nl7jf','M2NlY2ExYzVjMmQ0NzNkYmY1NDFkOTRmYjU4MjNmMTIxMjQ5ZDI4MTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6InVzZXJzLnZpZXdzLkN1c3RvbUJhY2tlbmQiLCJMSVNUX1FVRVJZIjpbWyJjb3Vyc2VzIiwiY291cnNlIl0sIiJdLCJfYXV0aF91c2VyX2hhc2giOiIxM2FmYjBmMGNiZDNlMTBjMzBiNjMzMWY3MDU5ZTA1MDg0NzQ0NThmIiwiX2F1dGhfdXNlcl9pZCI6IjEifQ==','2017-04-21 15:16:08.533815');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -517,7 +519,7 @@ CREATE TABLE `operation_usercourse` (
   KEY `operation_usercourse_user_id_835fe81a_fk_users_userprofile_id` (`user_id`),
   CONSTRAINT `operation_usercourse_course_id_9f1eab2e_fk_courses_course_id` FOREIGN KEY (`course_id`) REFERENCES `courses_course` (`id`),
   CONSTRAINT `operation_usercourse_user_id_835fe81a_fk_users_userprofile_id` FOREIGN KEY (`user_id`) REFERENCES `users_userprofile` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -526,6 +528,7 @@ CREATE TABLE `operation_usercourse` (
 
 LOCK TABLES `operation_usercourse` WRITE;
 /*!40000 ALTER TABLE `operation_usercourse` DISABLE KEYS */;
+INSERT INTO `operation_usercourse` VALUES (1,'2017-04-07 21:29:00.000000',1,1),(2,'2017-04-07 21:30:00.000000',2,1);
 /*!40000 ALTER TABLE `operation_usercourse` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -545,7 +548,7 @@ CREATE TABLE `operation_userfavorite` (
   PRIMARY KEY (`id`),
   KEY `operation_userfavorite_user_id_ad46a6af_fk_users_userprofile_id` (`user_id`),
   CONSTRAINT `operation_userfavorite_user_id_ad46a6af_fk_users_userprofile_id` FOREIGN KEY (`user_id`) REFERENCES `users_userprofile` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -554,7 +557,7 @@ CREATE TABLE `operation_userfavorite` (
 
 LOCK TABLES `operation_userfavorite` WRITE;
 /*!40000 ALTER TABLE `operation_userfavorite` DISABLE KEYS */;
-INSERT INTO `operation_userfavorite` VALUES (11,1,2,'2017-04-07 13:22:20.485740',1);
+INSERT INTO `operation_userfavorite` VALUES (11,1,2,'2017-04-07 13:22:20.485740',1),(15,8,2,'2017-04-07 22:41:23.567461',1);
 /*!40000 ALTER TABLE `operation_userfavorite` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -770,7 +773,7 @@ CREATE TABLE `users_userprofile` (
 
 LOCK TABLES `users_userprofile` WRITE;
 /*!40000 ALTER TABLE `users_userprofile` DISABLE KEYS */;
-INSERT INTO `users_userprofile` VALUES (1,'pbkdf2_sha256$24000$iQesA2ACqvkt$KZsXMbkNmqJpEwN+V4j0yTFzQItUvgjEJ+6UAJYR+iY=','2017-04-07 13:34:01.244261',1,'admin','','','admin@qq.com',1,1,'2017-04-04 10:35:00.903000','',NULL,'female','',NULL,'image/default.png');
+INSERT INTO `users_userprofile` VALUES (1,'pbkdf2_sha256$24000$iQesA2ACqvkt$KZsXMbkNmqJpEwN+V4j0yTFzQItUvgjEJ+6UAJYR+iY=','2017-04-07 21:29:17.628151',1,'admin','','','admin@qq.com',1,1,'2017-04-04 10:35:00.903000','',NULL,'female','',NULL,'image/default.png');
 /*!40000 ALTER TABLE `users_userprofile` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -884,7 +887,7 @@ CREATE TABLE `xadmin_log` (
   KEY `xadmin_log_user_id_bb16a176_fk_users_userprofile_id` (`user_id`),
   CONSTRAINT `xadmin_log_content_type_id_2a6cb852_fk_django_content_type_id` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `xadmin_log_user_id_bb16a176_fk_users_userprofile_id` FOREIGN KEY (`user_id`) REFERENCES `users_userprofile` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -893,7 +896,7 @@ CREATE TABLE `xadmin_log` (
 
 LOCK TABLES `xadmin_log` WRITE;
 /*!40000 ALTER TABLE `xadmin_log` DISABLE KEYS */;
-INSERT INTO `xadmin_log` VALUES (1,'2017-04-04 18:25:29.231000','127.0.0.1','1','CourseOrg object','create','已添加。',15,1),(2,'2017-04-04 18:27:33.628000','127.0.0.1','1','慕课网','change','没有字段被修改。',15,1),(3,'2017-04-04 18:30:37.257000','127.0.0.1','2','北京大学','create','已添加。',15,1),(4,'2017-04-04 18:31:33.404000','127.0.0.1','3','慕课网1','create','已添加。',15,1),(5,'2017-04-04 18:32:12.387000','127.0.0.1','4','慕课网2','create','已添加。',15,1),(6,'2017-04-04 18:33:07.178000','127.0.0.1','5','清华大学','create','已添加。',15,1),(7,'2017-04-04 18:33:40.319000','127.0.0.1','6','慕课网3','create','已添加。',15,1),(8,'2017-04-04 18:34:54.033000','127.0.0.1','7','南京大学','create','已添加。',15,1),(9,'2017-04-04 18:36:06.083000','127.0.0.1','8','天津大学','create','已添加。',15,1),(10,'2017-04-04 18:37:56.153000','127.0.0.1','9','广州大学','create','已添加。',15,1),(11,'2017-04-04 18:39:02.446000','127.0.0.1','10','深圳大学','create','已添加。',15,1),(12,'2017-04-04 18:41:40.051000','127.0.0.1','11','上海大学','create','已添加。',15,1),(13,'2017-04-04 22:32:47.787712','127.0.0.1','12','北京航空航天大学','create','已添加。',15,1),(14,'2017-04-04 23:00:38.990640','127.0.0.1','6','南京市','create','已添加。',14,1),(15,'2017-04-05 22:42:50.490588','127.0.0.1','12','北京航空航天大学','change','已修改 category 。',15,1),(16,'2017-04-05 22:44:29.943686','127.0.0.1','4','慕课网2','change','已修改 category 。',15,1),(17,'2017-04-05 22:45:29.636258','127.0.0.1','7','南京大学','change','已修改 city 。',15,1),(18,'2017-04-06 15:40:22.988663','192.168.1.82','1','奥巴马','create','已添加。',16,1),(19,'2017-04-06 15:41:53.601935','192.168.1.82','2','n老师','create','已添加。',16,1),(20,'2017-04-06 15:50:23.147042','192.168.1.82','1','django入门','create','已添加。',10,1),(21,'2017-04-06 15:51:53.029788','192.168.1.82','1','django入门','change','已修改 degree 。',10,1),(22,'2017-04-06 18:00:56.402811','192.168.1.82','1','django入门','change','没有字段被修改。',10,1),(23,'2017-04-06 18:33:22.754114','192.168.1.82','1','奥巴马','change','已修改 image 。',16,1),(24,'2017-04-06 18:33:43.685069','192.168.1.82','2','n老师','change','已修改 image 。',16,1),(25,'2017-04-06 18:33:50.518607','192.168.1.82','1','奥巴马','change','没有字段被修改。',16,1),(26,'2017-04-06 18:33:54.800110','192.168.1.82','2','n老师','change','没有字段被修改。',16,1),(27,'2017-04-07 11:23:00.452373','192.168.1.82','1','奥巴马','change','已修改 work_years 。',16,1),(28,'2017-04-07 15:08:56.848610','192.168.1.82','2','python入门','create','已添加。',10,1),(29,'2017-04-07 15:09:52.439714','192.168.1.82','3','java入门','create','已添加。',10,1),(30,'2017-04-07 15:10:52.104956','192.168.1.82','4','go中级','create','已添加。',10,1),(31,'2017-04-07 15:11:36.804317','192.168.1.82','5','python错误异常','create','已添加。',10,1),(32,'2017-04-07 15:12:14.110473','192.168.1.82','6','python面向对象','create','已添加。',10,1),(33,'2017-04-07 15:12:47.297609','192.168.1.82','7','python文件处理','create','已添加。',10,1),(34,'2017-04-07 15:13:25.047230','192.168.1.82','8','mysql复制','create','已添加。',10,1),(35,'2017-04-07 15:14:16.904262','192.168.1.82','9','python入门1','create','已添加。',10,1),(36,'2017-04-07 15:15:06.997708','192.168.1.82','10','python入门2','create','已添加。',10,1);
+INSERT INTO `xadmin_log` VALUES (1,'2017-04-04 18:25:29.231000','127.0.0.1','1','CourseOrg object','create','已添加。',15,1),(2,'2017-04-04 18:27:33.628000','127.0.0.1','1','慕课网','change','没有字段被修改。',15,1),(3,'2017-04-04 18:30:37.257000','127.0.0.1','2','北京大学','create','已添加。',15,1),(4,'2017-04-04 18:31:33.404000','127.0.0.1','3','慕课网1','create','已添加。',15,1),(5,'2017-04-04 18:32:12.387000','127.0.0.1','4','慕课网2','create','已添加。',15,1),(6,'2017-04-04 18:33:07.178000','127.0.0.1','5','清华大学','create','已添加。',15,1),(7,'2017-04-04 18:33:40.319000','127.0.0.1','6','慕课网3','create','已添加。',15,1),(8,'2017-04-04 18:34:54.033000','127.0.0.1','7','南京大学','create','已添加。',15,1),(9,'2017-04-04 18:36:06.083000','127.0.0.1','8','天津大学','create','已添加。',15,1),(10,'2017-04-04 18:37:56.153000','127.0.0.1','9','广州大学','create','已添加。',15,1),(11,'2017-04-04 18:39:02.446000','127.0.0.1','10','深圳大学','create','已添加。',15,1),(12,'2017-04-04 18:41:40.051000','127.0.0.1','11','上海大学','create','已添加。',15,1),(13,'2017-04-04 22:32:47.787712','127.0.0.1','12','北京航空航天大学','create','已添加。',15,1),(14,'2017-04-04 23:00:38.990640','127.0.0.1','6','南京市','create','已添加。',14,1),(15,'2017-04-05 22:42:50.490588','127.0.0.1','12','北京航空航天大学','change','已修改 category 。',15,1),(16,'2017-04-05 22:44:29.943686','127.0.0.1','4','慕课网2','change','已修改 category 。',15,1),(17,'2017-04-05 22:45:29.636258','127.0.0.1','7','南京大学','change','已修改 city 。',15,1),(18,'2017-04-06 15:40:22.988663','192.168.1.82','1','奥巴马','create','已添加。',16,1),(19,'2017-04-06 15:41:53.601935','192.168.1.82','2','n老师','create','已添加。',16,1),(20,'2017-04-06 15:50:23.147042','192.168.1.82','1','django入门','create','已添加。',10,1),(21,'2017-04-06 15:51:53.029788','192.168.1.82','1','django入门','change','已修改 degree 。',10,1),(22,'2017-04-06 18:00:56.402811','192.168.1.82','1','django入门','change','没有字段被修改。',10,1),(23,'2017-04-06 18:33:22.754114','192.168.1.82','1','奥巴马','change','已修改 image 。',16,1),(24,'2017-04-06 18:33:43.685069','192.168.1.82','2','n老师','change','已修改 image 。',16,1),(25,'2017-04-06 18:33:50.518607','192.168.1.82','1','奥巴马','change','没有字段被修改。',16,1),(26,'2017-04-06 18:33:54.800110','192.168.1.82','2','n老师','change','没有字段被修改。',16,1),(27,'2017-04-07 11:23:00.452373','192.168.1.82','1','奥巴马','change','已修改 work_years 。',16,1),(28,'2017-04-07 15:08:56.848610','192.168.1.82','2','python入门','create','已添加。',10,1),(29,'2017-04-07 15:09:52.439714','192.168.1.82','3','java入门','create','已添加。',10,1),(30,'2017-04-07 15:10:52.104956','192.168.1.82','4','go中级','create','已添加。',10,1),(31,'2017-04-07 15:11:36.804317','192.168.1.82','5','python错误异常','create','已添加。',10,1),(32,'2017-04-07 15:12:14.110473','192.168.1.82','6','python面向对象','create','已添加。',10,1),(33,'2017-04-07 15:12:47.297609','192.168.1.82','7','python文件处理','create','已添加。',10,1),(34,'2017-04-07 15:13:25.047230','192.168.1.82','8','mysql复制','create','已添加。',10,1),(35,'2017-04-07 15:14:16.904262','192.168.1.82','9','python入门1','create','已添加。',10,1),(36,'2017-04-07 15:15:06.997708','192.168.1.82','10','python入门2','create','已添加。',10,1),(37,'2017-04-07 21:29:46.763400','127.0.0.1','1','UserCourse object','create','已添加。',21,1),(38,'2017-04-07 21:31:02.686569','127.0.0.1','2','UserCourse object','create','已添加。',21,1),(39,'2017-04-07 22:11:46.668676','127.0.0.1','10','python入门2','change','已修改 tag 。',10,1),(40,'2017-04-07 22:11:55.978926','127.0.0.1','9','python入门1','change','已修改 tag 。',10,1),(41,'2017-04-07 22:12:08.630400','127.0.0.1','7','python文件处理','change','已修改 tag 。',10,1);
 /*!40000 ALTER TABLE `xadmin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -962,4 +965,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-07 17:17:43
+-- Dump completed on 2017-04-07 22:46:38
