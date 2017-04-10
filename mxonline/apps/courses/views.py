@@ -4,6 +4,7 @@ from django.views.generic.base import View
 from .models import Course, CourseResource, Video
 from django.http import HttpResponse
 from utils.mixin_utils import LoginRequiredMixin
+from django.db.models import Q
 # 分页攻能
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 from operation.models import UserFavorite, CourseComments, UserCourse
@@ -15,6 +16,16 @@ class CourseListView(View):
 
         all_courses = Course.objects.all().order_by("-add_time")
         # 默认按最新的进行排列
+
+        # 课程关键词搜索
+        search_keywords = request.GET.get('keywords', '')
+        if search_keywords:
+            # i的意思是不区分大小写  类似lisk   Q()|Q() 为or操作
+            all_courses = Course.filter(Q(name__icontains=search_keywords)|
+                                                Q(desc__icontains=search_keywords)|
+                                                Q(detail__icontains=search_keywords))
+
+
 
         hot_courses = Course.objects.all().order_by('-click_nums')[:3]
         # 课程排序(最热门)
