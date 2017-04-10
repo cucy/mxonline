@@ -213,7 +213,7 @@ class TeacherListView(View):
         all_teachers = Teacher.objects.all()
 
         # 热门排序
-        sort = request.GET.get('ct', '')
+        sort = request.GET.get('sort', '')
         if sort:
             if sort == "hot":
                 all_teachers = all_teachers.order_by("-click_nums")  # 根据点击量倒序
@@ -235,5 +235,6 @@ class TeacherListView(View):
         return render(request, "teachers-list.html", {
             "all_teachers": teachers,
             "sorted_teacher": sorted_teacher,
+            "sort": sort,
 
         })
