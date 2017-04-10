@@ -4,7 +4,7 @@
 # Author: zhourudong
 from django.conf.urls import url, include
 from .views import OrgView, AddUserAskView, OrgHomeView, OrgCourseView, OrgDescView, OrgTeacherView,AddFavView
-
+from .views import TeacherListView
 
 urlpatterns = [
     # 课程机构列表页
@@ -18,4 +18,6 @@ urlpatterns = [
     # 机构收藏
     url(r'^add_fav/$', AddFavView.as_view(), name="add_fav"),
 
+    # 讲师列表页
+    url(r'^teacher/list/$', TeacherListView.as_view(), name="teacher_list"),
 ]
