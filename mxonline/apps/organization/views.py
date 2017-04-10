@@ -212,6 +212,8 @@ class TeacherListView(View):
     def get(self, request, ):
         all_teachers = Teacher.objects.all()
 
+
+        current_nav = 'teacher'
         # 热门排序
         sort = request.GET.get('sort', '')
         if sort:
@@ -236,6 +238,7 @@ class TeacherListView(View):
             "all_teachers": teachers,
             "sorted_teacher": sorted_teacher,
             "sort": sort,
+            "current_nav": current_nav,
 
         })
 
