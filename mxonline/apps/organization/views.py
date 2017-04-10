@@ -209,7 +209,7 @@ class AddFavView(View):
 
 # 课程讲师列表页
 class TeacherListView(View):
-    def get(self, request):
+    def get(self, request, ):
         all_teachers = Teacher.objects.all()
 
         # 热门排序
@@ -238,3 +238,20 @@ class TeacherListView(View):
             "sort": sort,
 
         })
+
+
+#  课程讲师详情页
+class TeacherDetailView(View):
+    def get(self, request, teacher_id):
+        # 找出老师的个人信息
+        teacher = Teacher.objects.get(id=int(teacher_id))
+        # 找出老师的课程
+        all_courses = Course.objects.filter(teacher=teacher)
+        # 讲师排行榜
+        sorted_teacher = Teacher.objects.all().order_by("-click_nums")[:3]
+        return render(request, "teacher-detail.html", {
+            "teacher":teacher,
+            "all_courses":all_courses,
+            "sorted_teacher":sorted_teacher,
+
+    })
