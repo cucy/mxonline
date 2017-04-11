@@ -21,12 +21,19 @@ def ramdom_str(randomlength=8):
 
 def send_register_email(email, send_type = 'register'):
     email_record = EmailVerifyRecord()
-    code = ramdom_str(16)
+    if send_type == 'update_email':
+        ''' 控制验证码长度 '''
+        code = ramdom_str(4)
+    else:
+        code = ramdom_str(8)
     """ 生成16位数字符 """
     email_record.code = code
     email_record.email = email
     email_record.send_type = send_type
-    email_record.save()
+    try:
+        email_record.save()
+    except Exception as e:
+        print e
     """ 生成字符串插入数据库 """
 
     """ 向用户发送邮件 """
@@ -45,3 +52,10 @@ def send_register_email(email, send_type = 'register'):
         send_status = send_mail(email_title, email_body ,EMAIL_FROM, [email, ])
         if send_status:
             pass
+    elif send_type == 'update_email':
+        email_title = "暮雪在线网邮箱修改验证码"
+        email_body = "你的邮箱验证码为: {0}".format(code)
+        send_status = send_mail(email_title, email_body ,EMAIL_FROM, [email, ])
+        if send_status:
+            pass
+

@@ -207,5 +207,47 @@ class UpdatePwdView(View):
                                 content_type='application/json')
 
 
+# 发送邮箱验证码
+class SendEmailCodeView(LoginRequiredMixin, View):
+    def get(self, request):
+        email  = request.GET.get('email', '')
+        if UserProfile.objects.filter(email=email):
+            return HttpResponse("{  'email ':  '邮箱已被注册 ' }",
+                                content_type='application/json')
+
+        """ 调用函数发送邮件 """
+        # 发送邮箱验证码
+        send_register_email(email, "update_email")
+        return HttpResponse("{  'status ':  'success ' }",
+                            content_type='application/json')
+
+
+# 修改个人邮箱
+class UpdateEmailView(LoginRequiredMixin, View):
+    def post(self, request):
+        email = request.POST.get('email', '')
+        code = request.POST.get('code', '')
+
+        # 验证 验证码是否合法
+        existed_records  = EmailVerifyRecord.objects.filter(email=email, code=code, send_type='update_email')
+        if existed_records:
+            user = request.user
+            user.email = email
+            user.save()
+            return HttpResponse("{  'status ':  'success' }",
+                                content_type='application/json')
+        else:
+            return HttpResponse("{  'email ':  '验证码出错 ' }",
+                                content_type='application/json')
+
+
+
+
+
+
+
+
+
+
 
 

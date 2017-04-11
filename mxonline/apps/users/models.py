@@ -26,14 +26,15 @@ class UserProfile(AbstractUser):
 class EmailVerifyRecord(models.Model):
     code = models.CharField(max_length=20, verbose_name=u'验证码')
     email = models.EmailField(max_length=50, verbose_name=u'邮箱')
-    send_type = models.CharField(max_length=8, choices=(('register', u'注册'), ('forget', u'找回密码')), verbose_name=u'验证码类型')
+    send_type = models.CharField(max_length=18, default='register', choices=(('register', u'注册'),('forget', u'找回密码'),('update_email', u'修改邮箱')),verbose_name=u'验证码类型')
     send_time = models.DateTimeField(default=datetime.now, verbose_name=u'发送时间')
 
     class Meta:
         verbose_name = u'邮箱验证码'
         verbose_name_plural = verbose_name
-    def __unicode__(self):
-        return '{0}{1}'.format(self.code, self.email)
+        # def __unicode__(self):
+        #     return '{0}{1}'.format(self.code, self.email)
+
 
 class Banner(models.Model):
     title = models.CharField(max_length=100, verbose_name=u'标题')
