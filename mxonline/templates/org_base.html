@@ -101,7 +101,7 @@
 <section>
 	<div class="wp">
 		<ul  class="crumbs">
-            <li><a href="index.html">首页</a>></li>
+            <li><a href="{% url 'index' %}">首页</a>></li>
 			<li><a href="{% url 'org:org_list' %}">课程机构</a>></li>
 			<li>{% block page_path %}机构首页{% endblock %}</li>
 		</ul>
@@ -285,7 +285,7 @@
                     } else if (data.status == 'success') {
                         current_elem.text(data.msg)
                     }
-                },
+                }
             });
         }
 
@@ -299,7 +299,7 @@
                 score = $precision.attr('data-star-scope'),
                 option = {
                     half: true,
-                    path: '{% static 'images/' %}',
+                    path: '{% static "images/" %}',
                     precision: true,
                     size: 24,
                     starOff: 'g_star.png',
@@ -332,35 +332,6 @@
     });
 
 </script>
-
-{#<script type="text/javascript">#}
-{#    $(document).ready(function () {#}
-{#        $(function () {#}
-{#            $('.recordbtn1').click(function () {#}
-{#                $('.recordbox1').show();#}
-{#            });#}
-{#            $('.recordbtn2').click(function () {#}
-{#                $('.recordbox2').show();#}
-{#            });#}
-{##}
-{#            $('.imgslide').unslider({#}
-{#                speed: 500,               //  The speed to animate each slide (in milliseconds)#}
-{#                delay: 3000,              //  The delay between slide animations (in milliseconds)#}
-{#                complete: function () {#}
-{#                },  //  A function that gets called after every slide animation#}
-{#                keys: true,               //  Enable keyboard (left, right) arrow shortcuts#}
-{#                dots: true,               //  Display dot navigation#}
-{#                fluid: false              //  Support responsive design. May break non-responsive designs#}
-{#            });#}
-{#            var unslider = $('.imgslide').unslider();#}
-{#            $('.unslider-arrow').click(function () {#}
-{#                var fn = this.className.split(' ')[1];#}
-{#                unslider.data('unslider')[fn]();#}
-{#            });#}
-{#        });#}
-{#    });#}
-{##}
-{#</script>#}
 
 </body>
 </html>

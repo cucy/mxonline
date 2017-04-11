@@ -323,7 +323,7 @@
             }
             return this
         },
-        
+
         position: function() {
             var h, x = 0,
             k = 0,
@@ -357,7 +357,7 @@
                     s = 0
                 } else {
                     if (s + x > a(window).width()) {
-                        s = a(window).width() = x
+                        s = a(window).width()
                     }
                 }
             },
@@ -675,7 +675,7 @@
             });
             return this
         },
-        
+
         createSharp: function(g) {
             var j, k, f = "",
             d = "";
