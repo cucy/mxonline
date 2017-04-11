@@ -1,18 +1,17 @@
 # coding:utf8
+import json
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.backends import ModelBackend
 from django.db.models import Q
 from django.views.generic.base import View
 from django.contrib.auth.hashers import make_password
+from django.http import HttpResponse
+
 from .models import UserProfile, EmailVerifyRecord
 from .forms import LoginForm, RegisterForm, ForgetForm, ModifyPwdForm, UloadImageForm
 from utils.email_send import send_register_email
 from utils.mixin_utils import LoginRequiredMixin
-
-
-#   authenticate user validata
-#  Create your views here.
 
 
 class CustomBackend(ModelBackend):
@@ -131,6 +130,7 @@ class RestView(View):
         return render(request, "login.html", )
 
 
+# 修改用户密码
 class ModifyPwdView(View):
 
     def post(self,request):
@@ -178,9 +178,33 @@ class UploadImageView(LoginRequiredMixin, View):
             image_form = UloadImageForm(request.POST, request.FILES, instance=request.user)
             if image_form.is_valid():
                 image_form.save()
-                pass
+                # 返回json数据
+                return HttpResponse("{'status': 'success'}", content_type='application/json')
+            else:
+                return HttpResponse("{'status': 'fail'}", content_type='application/json')
 
 
+# 在个人中心修改用户密码
+class UpdatePwdView(View):
+
+    def post(self,request):
+        modify_form = ModifyPwdForm(request.POST)
+        if modify_form.is_valid():
+            pwd1 = request.POST.get("password1", "")
+            pwd2 = request.POST.get("password2", "")
+            # email = request.POST.get("email", "") 不需要email因为用户已经登入
+            if pwd1 != pwd2:
+                return HttpResponse("{ 'status':'fail', 'msg ':  '密码不一致 ' }",
+                                    content_type='application/json')
+
+            user = request.user
+            user.password = make_password(pwd1) # 加密
+            user.save()
+            return HttpResponse("{'status': 'success'}",
+                                content_type='application/json')
+        else:
+            return HttpResponse( json.dumps(modify_form.errors),
+                                content_type='application/json')
 
 
 
