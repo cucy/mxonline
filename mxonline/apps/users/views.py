@@ -6,7 +6,7 @@ from django.db.models import Q
 from django.views.generic.base import View
 from django.contrib.auth.hashers import make_password
 from .models import UserProfile, EmailVerifyRecord
-from .forms import LoginForm, RegisterForm, ForgetForm, ModifyPwdForm
+from .forms import LoginForm, RegisterForm, ForgetForm, ModifyPwdForm, UloadImageForm
 from utils.email_send import send_register_email
 from utils.mixin_utils import LoginRequiredMixin
 
@@ -158,6 +158,30 @@ class UserInfoView(LoginRequiredMixin, View):
         return render(request, 'usercenter-info.html', {
 
         })
+
+
+# 用户头像修改View
+class UploadImageView(LoginRequiredMixin, View):
+    def post(self, request):
+        # 实例化传入的是request , 第二参数(因为上传文件是放在request.FILES请求中，所以需要传入第二个参数)
+            '''
+            image_form = UloadImageForm(request.POST, request.FILES)
+            if image_form.is_valid():
+            第一种方法
+                # 验证通过的from会放进cleaned_data中
+                image = image_form.cleaned_data['image']
+                request.user.image =  image
+                request.user.save()
+                pass 
+            '''
+
+            image_form = UloadImageForm(request.POST, request.FILES, instance=request.user)
+            if image_form.is_valid():
+                image_form.save()
+                pass
+
+
+
 
 
 

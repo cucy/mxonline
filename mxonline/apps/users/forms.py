@@ -4,6 +4,7 @@ __date__ = '2017/4/2 23:11'
 __author__ = 'zhourudong'
 from django import forms
 from captcha.fields import CaptchaField
+from .models import UserProfile
 
 
 class LoginForm(forms.Form):
@@ -25,4 +26,16 @@ class ForgetForm(forms.Form):
 class ModifyPwdForm(forms.Form):
     password1 = forms.CharField(required=True, min_length=3)
     password2 = forms.CharField(required=True, min_length=3)
+
+
+class UloadImageForm(forms.ModelForm):
+    # 使用modelform 先指明使用哪个model来修改
+    class Meta:
+        #  可以指定model from是使用哪个models来进行转换(继承)
+        model = UserProfile
+        # 指定需要哪些字段
+        fields = ["image",]
+
+
+
 
