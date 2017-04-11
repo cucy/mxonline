@@ -4,7 +4,8 @@
 # Author: zhourudong
 
 from django.conf.urls import url, include
-from .views import UserInfoView, UploadImageView, UpdatePwdView, SendEmailCodeView, UpdateEmailView, MyCourseView
+from .views import UserInfoView, UploadImageView, UpdatePwdView
+from .views import SendEmailCodeView, UpdateEmailView, MyCourseView, MyFavOrgView
 
 urlpatterns = [
     # 用户个人中心信息
@@ -24,4 +25,7 @@ urlpatterns = [
 
     # 我的课程
     url(r'^mycourse/$', MyCourseView.as_view(), name="mycourse"),
+
+    # 我收藏的课程机构
+    url(r'^myfav/org/$', MyFavOrgView.as_view(), name="myfav_org"),
 ]

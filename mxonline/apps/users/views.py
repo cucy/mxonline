@@ -12,7 +12,8 @@ from .models import UserProfile, EmailVerifyRecord
 from .forms import LoginForm, RegisterForm, ForgetForm, ModifyPwdForm, UloadImageForm, UloadInfoForm
 from utils.email_send import send_register_email
 from utils.mixin_utils import LoginRequiredMixin
-from operation.models import UserCourse
+from operation.models import UserCourse, UserFavorite
+from organization.models import CourseOrg
 
 
 class CustomBackend(ModelBackend):
@@ -264,6 +265,25 @@ class MyCourseView(LoginRequiredMixin, View):
 
         return render(request, "usercenter-mycourse.html", {
             "user_courses":user_courses,
+
+
+        })
+
+
+#    我收藏的课程机构我的课程
+class MyFavOrgView(LoginRequiredMixin, View):
+    def get(self, request):
+        org_list =  []
+        # 因为只是存放的是外键 所以需要进一步取出机构名
+        fav_orgs  = UserFavorite.objects.filter(user=request.user, fav_type=2)
+        for fav_org in fav_orgs:
+            org_id = fav_org.fav_id
+            # 取出课程机构
+            org = CourseOrg.objects.get(id=org_id)
+            org_list.append(org)
+
+        return render(request, "usercenter-fav-org.html", {
+            "org_list":org_list,
 
 
         })
