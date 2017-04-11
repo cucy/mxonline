@@ -7,7 +7,7 @@ from django.db import models
 
 # Create your models here.
 class UserProfile(AbstractUser):
-    nike_name = models.CharField(max_length=50, default='', verbose_name=u'昵称')
+    nick_name = models.CharField(max_length=50, default='', verbose_name=u'昵称')
     birday = models.DateField(null=True, blank=True, verbose_name=u'生日')
     gender = models.CharField(max_length=8, choices=(('male', u'男'), ('female', u'女')), default='female',
                               verbose_name=u'性别')

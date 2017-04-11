@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                 ('is_staff', models.BooleanField(default=False, help_text='Designates whether the user can log into this admin site.', verbose_name='staff status')),
                 ('is_active', models.BooleanField(default=True, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='active')),
                 ('date_joined', models.DateTimeField(default=django.utils.timezone.now, verbose_name='date joined')),
-                ('nike_name', models.CharField(default='', max_length=50, verbose_name='\u6635\u79f0')),
+                ('nick_name', models.CharField(default='', max_length=50, verbose_name='\u6635\u79f0')),
                 ('birday', models.DateField(default='', null=True, verbose_name='\u751f\u65e5', blank=True)),
                 ('gender', models.CharField(default='female', max_length=5, verbose_name='\u6027\u522b', choices=[('male', '\u7537'), ('female', '\u5973')])),
                 ('address', models.CharField(default='', max_length=100, verbose_name='\u5730\u5740')),

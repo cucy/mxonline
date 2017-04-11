@@ -37,5 +37,14 @@ class UloadImageForm(forms.ModelForm):
         fields = ["image",]
 
 
+class UloadInfoForm(forms.ModelForm):
+    # 使用modelform 先指明使用哪个model来修改
+    class Meta:
+        #  可以指定model from是使用哪个models来进行转换(继承)
+        model = UserProfile
+        # 指定需要哪些字段
+        fields = ["nick_name",'birday','gender','address','mobile']
+
+
 
 
