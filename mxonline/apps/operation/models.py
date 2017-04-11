@@ -59,7 +59,7 @@ class UserMessage(models.Model):
 class UserCourse(models.Model):
     user = models.ForeignKey(UserProfile, verbose_name=u'用户')
     course = models.ForeignKey(Course, verbose_name=u'课程')
-    add_time = models.DateTimeField(default=datetime.now, verbose_name=u'学习时间')
+    learn_times = models.DateTimeField(default=datetime.now, verbose_name=u'学习时间')
 
     class Meta:
         verbose_name = u'用户课程'
