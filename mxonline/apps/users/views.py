@@ -7,12 +7,13 @@ from django.db.models import Q
 from django.views.generic.base import View
 from django.contrib.auth.hashers import make_password
 from django.http import HttpResponse
+from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import UserProfile, EmailVerifyRecord
 from .forms import LoginForm, RegisterForm, ForgetForm, ModifyPwdForm, UloadImageForm, UloadInfoForm
 from utils.email_send import send_register_email
 from utils.mixin_utils import LoginRequiredMixin
-from operation.models import UserCourse, UserFavorite
+from operation.models import UserCourse, UserFavorite, UserMessage
 from organization.models import CourseOrg, Teacher
 from  courses.models import Course
 
@@ -76,6 +77,14 @@ class RegisterView(View):
             """ 加密密文 """
             user_profile.password = make_password(pass_word)
             user_profile.save()
+
+            # 写入欢迎注册消息
+            user_messagge = UserMessage()
+            user_messagge.user = user_profile.id
+            user_messagge.message = '{0}欢迎注册'.format(user_name)
+            user_messagge.save()
+
+
 
             """ 调用函数发送邮件 """
             # 注册类型
@@ -300,7 +309,6 @@ class MyFavTeacherView(LoginRequiredMixin, View):
         })
 
 
-
 # 我收藏的公开课
 class MyFavCoursView(LoginRequiredMixin, View):
     def get(self, request):
@@ -315,5 +323,26 @@ class MyFavCoursView(LoginRequiredMixin, View):
 
         return render(request, "usercenter-fav-course.html", {
             "course_list": course_list,
+
+        })
+
+
+# 我的消息
+class MyMessageView(LoginRequiredMixin, View):
+    def get(self, request):
+        all_messages = UserMessage.objects.filter(user=request.user.id)
+
+        # 对个人消息分页
+        try:
+            page = request.GET.get('page', 1)
+        except PageNotAnInteger:
+            page = 1
+
+        p = Paginator(all_messages, 1, request=request)
+
+        messages = p.page(page)
+
+        return render(request, 'usercenter-message.html', {
+            'messages':messages,
 
         })

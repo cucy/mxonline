@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <a href="/users/message/">
-                            <div class="msg-num"><span id="MsgNum">1</span></div>
+                            <div class="msg-num"><span id="MsgNum">{{ request.user.get_unread_message_nums }}</span></div>
                         </a>
                     {% else %}
                         <a style="color:white" class="fr registerbtn" href="{% url 'resgiter' %}">注册</a>
