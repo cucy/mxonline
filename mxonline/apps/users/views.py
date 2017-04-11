@@ -13,7 +13,8 @@ from .forms import LoginForm, RegisterForm, ForgetForm, ModifyPwdForm, UloadImag
 from utils.email_send import send_register_email
 from utils.mixin_utils import LoginRequiredMixin
 from operation.models import UserCourse, UserFavorite
-from organization.models import CourseOrg
+from organization.models import CourseOrg, Teacher
+from  courses.models import Course
 
 
 class CustomBackend(ModelBackend):
@@ -104,7 +105,7 @@ class ActiveUserView(View):
 class ForgetPwdView(View):
     def get(self, request):
         forget_form = ForgetForm()
-        return render(request, "forgetpwd.html", {"forget_form":forget_form})
+        return render(request, "forgetpwd.html", {"forget_form": forget_form})
 
     def post(self, request):
         forget_form = ForgetForm(request.POST)
@@ -126,7 +127,7 @@ class RestView(View):
             for record in all_record:
                 email = record.email
                 """ 通过邮箱反查找用户,查找到用户则返回给用户一个页面书写重置密码  """
-                return render(request, "password_reset.html", {"email": email} )
+                return render(request, "password_reset.html", {"email": email})
         else:
             return render(request, "active_faill.html", )
         return render(request, "login.html", )
@@ -134,15 +135,14 @@ class RestView(View):
 
 # 修改用户密码
 class ModifyPwdView(View):
-
-    def post(self,request):
+    def post(self, request):
         modify_form = ModifyPwdForm(request.POST)
         if modify_form.is_valid():
             pwd1 = request.POST.get("password1", "")
             pwd2 = request.POST.get("password2", "")
             email = request.POST.get("email", "")
             if pwd1 != pwd2:
-                return render(request, "password_reset.html", {"email": email, "msg": "密码不一致" })
+                return render(request, "password_reset.html", {"email": email, "msg": "密码不一致"})
 
             user = UserProfile.objects.get(email=email)
             user.password = make_password(pwd1)
@@ -161,7 +161,6 @@ class UserInfoView(LoginRequiredMixin, View):
 
         })
 
-
     def post(self, request):
         # 如果不指定 instance 则会新增加一个用户
         user_info_form = UloadInfoForm(request.POST, instance=request.user)
@@ -174,37 +173,33 @@ class UserInfoView(LoginRequiredMixin, View):
                                 content_type='application/json')
 
 
-
-
-
 # 用户头像修改View
 class UploadImageView(LoginRequiredMixin, View):
     def post(self, request):
         # 实例化传入的是request , 第二参数(因为上传文件是放在request.FILES请求中，所以需要传入第二个参数)
-            '''
-            image_form = UloadImageForm(request.POST, request.FILES)
-            if image_form.is_valid():
-            第一种方法
-                # 验证通过的from会放进cleaned_data中
-                image = image_form.cleaned_data['image']
-                request.user.image =  image
-                request.user.save()
-                pass 
-            '''
+        '''
+        image_form = UloadImageForm(request.POST, request.FILES)
+        if image_form.is_valid():
+        第一种方法
+            # 验证通过的from会放进cleaned_data中
+            image = image_form.cleaned_data['image']
+            request.user.image =  image
+            request.user.save()
+            pass 
+        '''
 
-            image_form = UloadImageForm(request.POST, request.FILES, instance=request.user)
-            if image_form.is_valid():
-                image_form.save()
-                # 返回json数据
-                return HttpResponse("{'status': 'success'}", content_type='application/json')
-            else:
-                return HttpResponse("{'status': 'fail'}", content_type='application/json')
+        image_form = UloadImageForm(request.POST, request.FILES, instance=request.user)
+        if image_form.is_valid():
+            image_form.save()
+            # 返回json数据
+            return HttpResponse("{'status': 'success'}", content_type='application/json')
+        else:
+            return HttpResponse("{'status': 'fail'}", content_type='application/json')
 
 
 # 在个人中心修改用户密码
 class UpdatePwdView(View):
-
-    def post(self,request):
+    def post(self, request):
         modify_form = ModifyPwdForm(request.POST)
         if modify_form.is_valid():
             pwd1 = request.POST.get("password1", "")
@@ -215,19 +210,19 @@ class UpdatePwdView(View):
                                     content_type='application/json')
 
             user = request.user
-            user.password = make_password(pwd1) # 加密
+            user.password = make_password(pwd1)  # 加密
             user.save()
             return HttpResponse("{'status': 'success'}",
                                 content_type='application/json')
         else:
-            return HttpResponse( json.dumps(modify_form.errors),
+            return HttpResponse(json.dumps(modify_form.errors),
                                 content_type='application/json')
 
 
 # 发送邮箱验证码
 class SendEmailCodeView(LoginRequiredMixin, View):
     def get(self, request):
-        email  = request.GET.get('email', '')
+        email = request.GET.get('email', '')
         if UserProfile.objects.filter(email=email):
             return HttpResponse("{  'email ':  '邮箱已被注册 ' }",
                                 content_type='application/json')
@@ -246,7 +241,7 @@ class UpdateEmailView(LoginRequiredMixin, View):
         code = request.POST.get('code', '')
 
         # 验证 验证码是否合法
-        existed_records  = EmailVerifyRecord.objects.filter(email=email, code=code, send_type='update_email')
+        existed_records = EmailVerifyRecord.objects.filter(email=email, code=code, send_type='update_email')
         if existed_records:
             user = request.user
             user.email = email
@@ -264,18 +259,17 @@ class MyCourseView(LoginRequiredMixin, View):
         user_courses = UserCourse.objects.filter(user=request.user)
 
         return render(request, "usercenter-mycourse.html", {
-            "user_courses":user_courses,
-
+            "user_courses": user_courses,
 
         })
 
 
-#    我收藏的课程机构我的课程
+# 我收藏的课程机构
 class MyFavOrgView(LoginRequiredMixin, View):
     def get(self, request):
-        org_list =  []
+        org_list = []
         # 因为只是存放的是外键 所以需要进一步取出机构名
-        fav_orgs  = UserFavorite.objects.filter(user=request.user, fav_type=2)
+        fav_orgs = UserFavorite.objects.filter(user=request.user, fav_type=2)
         for fav_org in fav_orgs:
             org_id = fav_org.fav_id
             # 取出课程机构
@@ -283,15 +277,43 @@ class MyFavOrgView(LoginRequiredMixin, View):
             org_list.append(org)
 
         return render(request, "usercenter-fav-org.html", {
-            "org_list":org_list,
+            "org_list": org_list,
 
+        })
+
+
+# 我收藏的授课讲师
+class MyFavTeacherView(LoginRequiredMixin, View):
+    def get(self, request):
+        teacher_list = []
+        # 因为只是存放的是外键 所以需要进一步取出机构名
+        fav_teachers = UserFavorite.objects.filter(user=request.user, fav_type=3)
+        for fav_teacher in fav_teachers:
+            teacher_id = fav_teacher.fav_id
+            # 取出teacher
+            teacher = Teacher.objects.get(id=teacher_id)
+            teacher_list.append(teacher)
+
+        return render(request, "usercenter-fav-teacher.html", {
+            "teacher_list": teacher_list,
 
         })
 
 
 
+# 我收藏的公开课
+class MyFavCoursView(LoginRequiredMixin, View):
+    def get(self, request):
+        course_list = []
+        # 因为只是存放的是外键 所以需要进一步取出机构名
+        fav_courses = UserFavorite.objects.filter(user=request.user, fav_type=1)
+        for fav_course in fav_courses:
+            course_id = fav_course.fav_id
+            # 取出course
+            course = Course.objects.get(id=course_id)
+            course_list.append(course)
 
+        return render(request, "usercenter-fav-course.html", {
+            "course_list": course_list,
 
-
-
-
+        })
