@@ -48,6 +48,15 @@ class Course(models.Model):
         return self.lesson_set.all()
 
 
+class BannerCourse(Course):
+    class Meta:
+        verbose_name = "轮播课程"
+        verbose_name_plural = verbose_name
+        proxy = True
+        # 设置proxy为True不会生成新的表
+        # 可以在xadmin中注册不同的管理器
+
+
 class Lesson(models.Model):
     course = models.ForeignKey(Course, verbose_name=u'课程')
     learn_times = models.IntegerField(default=0, verbose_name=u'学习时长(min)')

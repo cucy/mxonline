@@ -3,7 +3,7 @@
 __date__ = '2017/4/2 10:27'
 __author__ = 'zhourudong'
 
-from .models import Course, Lesson, Video, CourseResource
+from .models import Course, Lesson, Video, CourseResource, BannerCourse
 
 
 import xadmin
@@ -32,6 +32,12 @@ class CourseAdmin(object):
     # 只能一层嵌套  无法两层嵌套（课程--》章节） （无法实现 课程--》章节--》视频）
     inlines = [LessonInline, CourseResourceInline]
 
+    def queryset(self):
+        qs = super(CourseAdmin, self).queryset()
+        qs = qs.filter(is_banner=False )
+        # 只会显示指定的数据 is_banner = true
+        return qs
+
     # # 自定义以某字段来排序
     # ordering = ["-click_nums"]
     #
@@ -42,6 +48,21 @@ class CourseAdmin(object):
     # exclude = ["degree"]
     #
     # # CourseOrgAdmin 需要在它的外键设置（这是需要点击出现下拉效果的部分）
+
+
+class BannerCourseAdmin(object):
+    list_display = (
+        'name', 'desc', 'detail', 'degree', 'learn_times', "students", "fav_nums", "image", "click_nums", "add_time")
+    search_fields = ('name', 'desc', 'detail', 'degree', "students", "fav_nums", "image", "click_nums",)
+    list_filter = (
+        'name', 'desc', 'detail', 'degree', 'learn_times', "students", "fav_nums", "image", "click_nums", "add_time")
+
+    def queryset(self):
+        qs = super(BannerCourseAdmin, self).queryset()
+        qs = qs.filter(is_banner=True )
+        # 只会显示指定的数据 is_banner = true
+        return qs
+
 
 
 class LessonAdmin(object):
@@ -63,6 +84,7 @@ class CourseResourceAdmin(object):
 
 
 xadmin.site.register(Course, CourseAdmin)
+xadmin.site.register(BannerCourse, BannerCourseAdmin)
 xadmin.site.register(Lesson, LessonAdmin)
 xadmin.site.register(Video, VideoAdmin)
 xadmin.site.register(CourseResource, CourseResourceAdmin)
