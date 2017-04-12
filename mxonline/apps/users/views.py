@@ -1,12 +1,13 @@
 # coding:utf8
 import json
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+# django自带的登入登出功能
 from django.contrib.auth.backends import ModelBackend
 from django.db.models import Q
 from django.views.generic.base import View
 from django.contrib.auth.hashers import make_password
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import UserProfile, EmailVerifyRecord
@@ -32,6 +33,16 @@ class CustomBackend(ModelBackend):
         except Exception as e:
             print(e)
             return None
+
+
+# 用户登出功能
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        from django.core.urlresolvers import reverse
+        # reverse 功能类似模板中使用的url功能
+        # 直接进行重定向到指定页面
+        return HttpResponseRedirect(reverse('index'))
 
 
 class LoginView(View):
