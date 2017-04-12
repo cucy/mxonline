@@ -18,7 +18,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
 from users.views import LoginView, RegisterView, ActiveUserView, ForgetPwdView, RestView, ModifyPwdView,LogoutView
-from users.views import IndexView
+from users.views import IndexView, LoginUnsafeView
 
 from django.views.static import serve  # 专门用于处理静态文件
 from mxonline.settings import MEDIA_ROOT, STATIC_ROOT
@@ -29,7 +29,14 @@ urlpatterns = [
     # url(r'^admin/', admin.site.urls),
     url(r'^xadmin/', xadmin.site.urls),
     url('^$', IndexView.as_view(), name="index"),
+
+    # 登录
     url('^login/$', LoginView.as_view(), name="login"),
+
+    #  不安全登录示例
+    # url('^login/$', LoginUnsafeView.as_view(), name="login"),
+
+
     url('^logout/$', LogoutView.as_view(), name="logout"),
     url('^register/$', RegisterView.as_view(), name="resgiter"),
     url(r'^captcha/', include('captcha.urls')),

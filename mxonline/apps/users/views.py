@@ -71,9 +71,46 @@ class LoginView(View):
             return render(request, "login.html", {"login_form": login_form})
 
 
+# 不安全登入实例
+class LoginUnsafeView(View):
+    def get(self, request):
+        register_form = RegisterForm()
+        return render(request, "login.html", {"register_form": register_form})
+
+    def post(self, request):
+        user_name = request.POST.get("username", "")
+        pass_word = request.POST.get("password", "")
+        import MySQLdb
+        conn = MySQLdb.connect(host="192.168.1.82",
+                               user='zrd',
+                               passwd='123456',
+                               db='mxonline',
+                               charset='utf8',
+                               )
+        cursor = conn.cursor()
+        sql_select = "SELECT * FROM users_userprofile WHER email='{0}' AND password='{1}'".format(user_name, pass_word)
+        result = cursor.excute(sql_select)
+        for row in result.fetchall():
+            # 查询到用户
+            pass
+        print 'login test'
+        '''
+        用户名直接传入
+        ' OR 1==1#
+        密码
+        sdfdsfsdf
+        
+        得到以下sql
+        'SELECT * FROM users_userprofile WHER email=\\'\\' OR 1 == 1#\\' AND password=\\'ddsssdds\\'
+        '''
+
+
+
+
 class RegisterView(View):
     def get(self, request):
         return render(request, "register.html")
+
 
     def post(self, request):
         register_form = RegisterForm(request.POST)
