@@ -26,7 +26,7 @@ class UserProfile(AbstractUser):
     def get_unread_message_nums(self):
         # 不能在开头写import 否则会循环调用， 以下是调用的时候才进行导入
         from operation.models import UserMessage
-        return UserMessage.objects.filter(user=self.id).count()
+        return UserMessage.objects.filter(user=self.id, has_read=False).count()
 
 
 
