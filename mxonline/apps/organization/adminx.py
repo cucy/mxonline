@@ -18,6 +18,12 @@ class CourseOrgAdmin(object):
     search_fields = ('name', 'desc', 'click_nums', "fav_nums", "image", "address", "city",)
     list_filter = ('name', 'desc', 'click_nums', "fav_nums", "image", "address", "city", "add_time")
 
+    # 设置以后不会显示一条下拉框全部显示 下一级需要实现的功能（需要在上级设置）
+    # 防止数据量过大时显示过多
+    relfield_style = "fk-ajax"
+
+    # CourseOrgAdmin 需要在它的外键设置（这是需要点击出现下拉效果的部分）  ---= 实现功能的部分
+
 
 class TeacherAdmin(object):
     list_display = (

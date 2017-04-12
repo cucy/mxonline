@@ -16,6 +16,17 @@ class CourseAdmin(object):
     list_filter = (
         'name', 'desc', 'detail', 'degree', 'learn_times', "students", "fav_nums", "image", "click_nums", "add_time")
 
+    # 自定义以某字段来排序
+    ordering = ["-click_nums"]
+
+    #  设定字段为只读
+    readonly_fields = ["click_nums","students" ]
+
+    # 指定不显示某些字段 (readonly_fields里设置了 以下不要在设置 否则冲突)
+    exclude = ["detail"]
+
+    # CourseOrgAdmin 需要在它的外键设置（这是需要点击出现下拉效果的部分）
+
 
 class LessonAdmin(object):
     list_display = ('course', 'name', 'add_time')
