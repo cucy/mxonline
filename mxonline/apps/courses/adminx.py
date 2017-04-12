@@ -21,13 +21,18 @@ class CourseResourceInline(object):
     extra = 0
 
 
-
 class CourseAdmin(object):
-    list_display = (
-        'name', 'desc', 'detail', 'degree', 'learn_times', "students", "fav_nums", "image", "click_nums", "add_time")
+    list_display = ( 'get_zj_nums', # 函数也和字段一样可以指定
+                     'go_to', # 自定义的a链接
+                    'name', 'desc', 'detail', 'degree',
+                     'learn_times', "students",
+                     "fav_nums", "image", "click_nums", "add_time")
     search_fields = ('name', 'desc', 'detail', 'degree', "students", "fav_nums", "image", "click_nums",)
     list_filter = (
         'name', 'desc', 'detail', 'degree', 'learn_times', "students", "fav_nums", "image", "click_nums", "add_time")
+
+    # 在列表页字段可以直接修改
+    list_editable = ["degree", "desc"]
 
     # 只能一层嵌套  无法两层嵌套（课程--》章节） （无法实现 课程--》章节--》视频）
     inlines = [LessonInline, CourseResourceInline]

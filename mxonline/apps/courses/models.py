@@ -39,6 +39,15 @@ class Course(models.Model):
         # self 当前课程的实例lesson_set 指向Lesson
         return self.lesson_set.all().count()
 
+    get_zj_nums.short_description = "章节数量"
+
+    def go_to(self):
+        # 点击后跳转到（自定义）
+        from django.utils.safestring import mark_safe
+        return mark_safe("<a href='http://www.baidu.com'>跳转百度</a>")
+
+    go_to.short_description = "跳转百度"
+
     def get_learn_users(self):
         # 获取学习人数
         return self.usercourse_set.all()[:5]
