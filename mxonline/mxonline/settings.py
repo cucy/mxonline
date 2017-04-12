@@ -27,9 +27,9 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'extra_app'))
 SECRET_KEY = 'tpa&9m)cos&h!-9ai(#=w9_&eeoun95i0g4cq#!5fl!=4a)cxc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['192.168.1.51','127.0.0.1']
+ALLOWED_HOSTS = [ '*']
 
 # Application definition
 
@@ -141,10 +141,14 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
+# 当debug设置为Flase以后静态文件django不会自动获取
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+
+
 
 EMAIL_HOST = "smtp.sina.com"
 EMAIL_PORT = 25
@@ -155,3 +159,6 @@ EMAIL_FROM = "zhourudong2017@sina.com"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")

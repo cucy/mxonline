@@ -370,6 +370,9 @@ class MyMessageView(LoginRequiredMixin, View):
 # 首页
 class IndexView(View):
     def get(self, request):
+        # 手动500错误
+        # print 1/0
+
         # 取出轮播图
         all_banners = Banner.objects.all().order_by('index')
         # 取出课程
@@ -383,3 +386,23 @@ class IndexView(View):
             'banner_courses':banner_courses,
             'course_orgs':course_orgs,
         })
+
+
+# 全局404处理函数
+def page_not_found404(request):
+    from django.shortcuts import render_to_response
+    response = render_to_response('404.html', {
+
+    })
+    response.status_code = 404
+    return response
+
+
+# 全局500处理函数
+def page_not_error500(request):
+    from django.shortcuts import render_to_response
+    response = render_to_response('500.html', {
+
+    })
+    response.status_code = 500
+    return response
