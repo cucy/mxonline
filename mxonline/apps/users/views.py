@@ -17,7 +17,7 @@ from utils.mixin_utils import LoginRequiredMixin
 from operation.models import UserCourse, UserFavorite, UserMessage
 from organization.models import CourseOrg, Teacher
 from  courses.models import Course
-
+from .models import Banner
 
 class CustomBackend(ModelBackend):
     """ 认证类型 """
@@ -25,7 +25,7 @@ class CustomBackend(ModelBackend):
     def authenticate(self, username=None, password=None, **kwargs):
         try:
             # 并集操作| 交集操作,
-            print(username, "------------------------")
+
             user = UserProfile.objects.get(Q(username=username) | Q(email=username))
             # 传入明文进行对比
             if user.check_password(password):
@@ -362,4 +362,22 @@ class MyMessageView(LoginRequiredMixin, View):
         return render(request, 'usercenter-message.html', {
             'messages':messages,
 
+        })
+
+
+# 首页
+class IndexView(View):
+    def get(self, request):
+        # 取出轮播图
+        all_banners = Banner.objects.all().order_by('index')
+        # 取出课程
+        courses = Course.objects.filter(is_banner=False)[:5]
+        banner_courses =  Course.objects.filter(is_banner=False)[:3]
+        course_orgs  = CourseOrg.objects.all()[:15]
+
+        return render(request, 'index.html', {
+            'all_banners':all_banners,
+            'courses':courses,
+            'banner_courses':banner_courses,
+            'course_orgs':course_orgs,
         })
