@@ -4,7 +4,7 @@ __date__ = '2017/4/2 10:27'
 __author__ = 'zhourudong'
 
 from .models import Course, Lesson, Video, CourseResource, BannerCourse
-
+from organization.models import CourseOrg
 
 import xadmin
 
@@ -22,8 +22,8 @@ class CourseResourceInline(object):
 
 
 class CourseAdmin(object):
-    list_display = ( 'get_zj_nums', # 函数也和字段一样可以指定
-                     'go_to', # 自定义的a链接
+    list_display = ( #'get_zj_nums', # 函数也和字段一样可以指定
+                     #'go_to', # 自定义的a链接
                     'name', 'desc', 'detail', 'degree',
                      'learn_times', "students",
                      "fav_nums", "image", "click_nums", "add_time")
@@ -44,6 +44,17 @@ class CourseAdmin(object):
         return qs
 
     refresh_times = [3 , 5] # 可选 3 ， 5秒刷新
+
+    def save_models(self):
+        # 在保存课程时候统计课程机构的课程数
+        obj = self.new_obj
+        obj.save()
+        if obj.course_org is not None:
+            course_org = obj.course_org
+            course_org.course_nums = Course.objects.filter(course_org=course_org).count()
+            course_org.save()
+
+
     # # 自定义以某字段来排序
     # ordering = ["-click_nums"]
     #
