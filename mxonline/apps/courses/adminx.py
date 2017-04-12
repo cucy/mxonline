@@ -43,6 +43,7 @@ class CourseAdmin(object):
         # 只会显示指定的数据 is_banner = true
         return qs
 
+    refresh_times = [3 , 5] # 可选 3 ， 5秒刷新
     # # 自定义以某字段来排序
     # ordering = ["-click_nums"]
     #
