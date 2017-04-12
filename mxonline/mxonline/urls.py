@@ -21,7 +21,8 @@ from users.views import LoginView, RegisterView, ActiveUserView, ForgetPwdView, 
 from users.views import IndexView, LoginUnsafeView
 
 from django.views.static import serve  # 专门用于处理静态文件
-from mxonline.settings import MEDIA_ROOT, STATIC_ROOT
+from mxonline.settings import MEDIA_ROOT
+# from mxonline.settings import STATIC_ROOT
 
 import xadmin
 
@@ -58,7 +59,7 @@ urlpatterns = [
     url(r'^users/', include('users.urls', namespace="users")),
 
     # 静态文件
-    url(r'^static/(?P<path>.*)$', serve, {"document_root":STATIC_ROOT}),
+    # url(r'^static/(?P<path>.*)$', serve, {"document_root":STATIC_ROOT}),
 
 ]
 

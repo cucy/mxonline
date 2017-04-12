@@ -3,9 +3,15 @@
 __time__ = '2017/4/1 00:09'
 __author__ = 'zhour udong'
 
-from .models import EmailVerifyRecord, Banner
+from .models import EmailVerifyRecord, Banner, UserProfile
+
+from xadmin.plugins.auth import UserAdmin
 import xadmin
 from xadmin import views
+
+
+class UserProfileAdmin(UserAdmin):
+    pass
 
 
 class BaseSetting(object):
@@ -37,3 +43,4 @@ xadmin.site.register(EmailVerifyRecord, EmailVerifyRecordAdmin)
 xadmin.site.register(Banner, BannerAdmin)
 xadmin.site.register(views.BaseAdminView, BaseSetting)
 xadmin.site.register(views.CommAdminView, GlobalSettings)
+xadmin.site.register(UserProfile, UserProfileAdmin)
