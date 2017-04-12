@@ -17,7 +17,8 @@ from xadmin.sites import site
 from xadmin.util import unquote
 from xadmin.views import BaseAdminPlugin, ModelFormAdminView, ModelAdminView, CommAdminView, csrf_protect_m
 
-
+from django.contrib.auth import get_user_model
+User = get_user_model()
 ACTION_NAME = {
     'add': _('Can add %s'),
     'change': _('Can change %s'),
@@ -78,6 +79,7 @@ class UserAdmin(object):
         return super(UserAdmin, self).get_model_form(**kwargs)
 
     def get_form_layout(self):
+        # 自定义的一种显示方式
         if self.org_obj:
             self.form_layout = (
                 Main(
