@@ -60,7 +60,9 @@ class LoginView(View):
             if user is not None:
                 if user.is_active:
                     login(request, user)
-                    return render(request, "index.html")
+                    from django.core.urlresolvers import reverse
+                    # 防止登入后没有数据传入
+                    return HttpResponseRedirect(reverse('index'))
                 else:
                     return render(request, "login.html", {"msg": "用户名未激活", })
             else:
@@ -371,8 +373,8 @@ class IndexView(View):
         # 取出轮播图
         all_banners = Banner.objects.all().order_by('index')
         # 取出课程
-        courses = Course.objects.filter(is_banner=False)[:5]
-        banner_courses =  Course.objects.filter(is_banner=False)[:3]
+        courses = Course.objects.filter(is_banner=False)[:6]
+        banner_courses =  Course.objects.filter(is_banner=True)[:3]
         course_orgs  = CourseOrg.objects.all()[:15]
 
         return render(request, 'index.html', {
