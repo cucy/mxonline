@@ -5,6 +5,7 @@ __author__ = 'zhour udong'
 
 from .models import EmailVerifyRecord, Banner, UserProfile
 
+
 from xadmin.plugins.auth import UserAdmin
 import xadmin
 from xadmin import views
@@ -44,3 +45,7 @@ xadmin.site.register(Banner, BannerAdmin)
 xadmin.site.register(views.BaseAdminView, BaseSetting)
 xadmin.site.register(views.CommAdminView, GlobalSettings)
 xadmin.site.register(UserProfile, UserProfileAdmin)
+
+# 卸载django admin 自动注册的userprofile
+from django.contrib.auth.models import User
+xadmin.site.unregister(User)
